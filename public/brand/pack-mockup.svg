@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" fill="none">
+  <!-- AVRELLE stand-up pouch mockup — placeholder for real product photography -->
+  <defs>
+    <linearGradient id="pouchBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F5F1E5"/>
+      <stop offset="18%" stop-color="#FDFAF2"/>
+      <stop offset="82%" stop-color="#F5F1E5"/>
+      <stop offset="100%" stop-color="#E7DDC6"/>
+    </linearGradient>
+    <linearGradient id="pouchTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#16382A"/>
+      <stop offset="50%" stop-color="#1D4A37"/>
+      <stop offset="100%" stop-color="#102A20"/>
+    </linearGradient>
+    <filter id="drop" x="-25%" y="-15%" width="150%" height="130%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#102A20" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#drop)">
+    <!-- pouch -->
+    <path d="M92 78 C92 68 100 60 110 60 H290 C300 60 308 68 308 78 V402 C308 416 296 428 282 428 H118 C104 428 92 416 92 402 Z" fill="url(#pouchBody)"/>
+    <!-- top seal -->
+    <path d="M92 96 C92 76 104 62 122 62 H278 C296 62 308 76 308 96 V118 H92 Z" fill="url(#pouchTop)"/>
+    <line x1="92" y1="122" x2="308" y2="122" stroke="#C2A05C" stroke-width="1.6"/>
+    <line x1="104" y1="74" x2="296" y2="74" stroke="#C2A05C" stroke-width="0.6" stroke-dasharray="3 4" opacity="0.7"/>
+
+    <!-- label panel -->
+    <rect x="116" y="150" width="168" height="212" fill="#FDFAF2" stroke="#C2A05C" stroke-width="1"/>
+    <rect x="124" y="158" width="152" height="196" fill="none" stroke="#C2A05C" stroke-width="0.4" stroke-dasharray="1 3" opacity="0.8"/>
+
+    <!-- mark -->
+    <circle cx="200" cy="196" r="21" fill="#16382A"/>
+    <circle cx="200" cy="196" r="19" stroke="#C2A05C" stroke-width="0.7" fill="none"/>
+    <path d="M200 184 L206.5 204 H204 L202.5 199.2 H197.5 L196 204 H193.5 L200 184 Z M198.5 196.8 H201.5 L200 191.8 L198.5 196.8 Z" fill="#F5F1E5"/>
+
+    <text x="200" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="21" letter-spacing="5" fill="#16382A">AVRELLE</text>
+    <line x1="146" y1="250" x2="254" y2="250" stroke="#C2A05C" stroke-width="0.8"/>
+    <text x="200" y="264" text-anchor="middle" font-family="Georgia, serif" font-size="8" letter-spacing="3" fill="#8A6D2F">AGRO PVT LTD · PURNEA, BIHAR</text>
+
+    <!-- makhana illustration -->
+    <g transform="translate(200 302)">
+      <circle cx="0" cy="0" r="30" fill="#F3EAD6"/>
+      <path d="M-22,-4 C-14,-14 14,-14 22,-4" stroke="#C9B387" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <path d="M-24,8 C-14,18 14,18 24,8" stroke="#C9B387" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <circle cx="-30" cy="12" r="9" fill="#EDE1C6"/>
+      <circle cx="31" cy="10" r="10" fill="#EDE1C6"/>
+    </g>
+
+    <text x="200" y="352" text-anchor="middle" font-family="Georgia, serif" font-size="10" letter-spacing="2.4" fill="#75624A">PHOOL MAKHANA · FOX NUTS</text>
+
+    <!-- grade window text -->
+    <rect x="150" y="382" width="100" height="24" fill="#16382A"/>
+    <text x="200" y="398" text-anchor="middle" font-family="Georgia, serif" font-size="10.5" letter-spacing="2.6" fill="#E5D2A4">GRADE · SIZE</text>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- 4 Suta (12.5–15.5 mm) — placeholder for real graded product photography -->
+  <defs>
+    <radialGradient id="p" cx="38%" cy="30%" r="78%">
+      <stop offset="0%" stop-color="#FDFAF2"/>
+      <stop offset="58%" stop-color="#F1E7D0"/>
+      <stop offset="100%" stop-color="#DCCBA4"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="98" fill="#FAF7EF"/>
+  <circle cx="100" cy="100" r="98" stroke="#E5DAC3" stroke-width="1"/>
+  <ellipse cx="100" cy="136.12" rx="38.64" ry="6.72" fill="#102A20" opacity="0.12"/>
+  <g>
+    <path transform="translate(100 100) scale(4.2)" d="M0,-10 C4.2,-10.6 8.2,-7.2 9.6,-3.2 C11.2,1.2 9.2,7 5.2,9.2 C1.2,11.4 -5,10.8 -8.2,7.2 C-11.4,3.6 -10.8,-4.2 -7.2,-8 C-5.2,-9.9 -3,-9.8 0,-10 Z" fill="url(#p)"/>
+    <path transform="translate(100 100) scale(4.2)" d="M-6,-4.5 C-3,-6.5 3,-6.5 6,-4.5" stroke="#C9B387" stroke-width="0.7" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path transform="translate(100 100) scale(4.2)" d="M-6.8,2.5 C-3.4,5 3.4,5 6.8,2.5" stroke="#C9B387" stroke-width="0.7" fill="none" stroke-linecap="round" opacity="0.65"/>
+  </g>
+</svg>

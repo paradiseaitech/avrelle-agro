@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 480" fill="none">
+  <!-- Hero scene: bowl of premium makhana — placeholder for brand photography -->
+  <defs>
+    <radialGradient id="puffLight" cx="38%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FDFAF2"/>
+      <stop offset="60%" stop-color="#F3EAD6"/>
+      <stop offset="100%" stop-color="#DFCFAB"/>
+    </radialGradient>
+    <radialGradient id="puffShade" cx="40%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#FBF6EA"/>
+      <stop offset="62%" stop-color="#EDE1C6"/>
+      <stop offset="100%" stop-color="#D3BF95"/>
+    </radialGradient>
+    <radialGradient id="bowlFill" cx="50%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#1D4A37"/>
+      <stop offset="100%" stop-color="#0B1F18"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0B1F18" flood-opacity="0.25"/>
+    </filter>
+    <g id="puff">
+      <path d="M0,-10 C4.2,-10.6 8.2,-7.2 9.6,-3.2 C11.2,1.2 9.2,7 5.2,9.2 C1.2,11.4 -5,10.8 -8.2,7.2 C-11.4,3.6 -10.8,-4.2 -7.2,-8 C-5.2,-9.9 -3,-9.8 0,-10 Z"/>
+      <path d="M-6,-4.5 C-3,-6.5 3,-6.5 6,-4.5" stroke="#C9B387" stroke-width="0.7" fill="none" stroke-linecap="round" opacity="0.75"/>
+      <path d="M-6.8,2.5 C-3.4,5 3.4,5 6.8,2.5" stroke="#C9B387" stroke-width="0.7" fill="none" stroke-linecap="round" opacity="0.6"/>
+    </g>
+  </defs>
+
+  <!-- soft ground shadow -->
+  <ellipse cx="280" cy="416" rx="196" ry="22" fill="#0B1F18" opacity="0.18"/>
+
+  <!-- bowl -->
+  <g filter="url(#soft)">
+    <path d="M92 300 C92 300 130 402 280 402 C430 402 468 300 468 300 Z" fill="url(#bowlFill)"/>
+    <ellipse cx="280" cy="300" rx="188" ry="40" fill="#16382A"/>
+    <ellipse cx="280" cy="300" rx="188" ry="40" fill="none" stroke="#C2A05C" stroke-width="2.4"/>
+    <ellipse cx="280" cy="300" rx="172" ry="33" fill="#0E241C"/>
+    <path d="M108 318 C150 366 410 366 452 318" stroke="#C2A05C" stroke-width="1" opacity="0.5" fill="none"/>
+  </g>
+
+  <!-- makhana pile in bowl -->
+  <g>
+    <use href="#puff" transform="translate(190 288) scale(2.4) rotate(-14)" fill="url(#puffShade)"/>
+    <use href="#puff" transform="translate(250 276) scale(2.7) rotate(8)" fill="url(#puffLight)"/>
+    <use href="#puff" transform="translate(318 282) scale(2.5) rotate(-6)" fill="url(#puffShade)"/>
+    <use href="#puff" transform="translate(382 290) scale(2.2) rotate(18)" fill="url(#puffLight)"/>
+    <use href="#puff" transform="translate(148 300) scale(2.0) rotate(24)" fill="url(#puffLight)"/>
+    <use href="#puff" transform="translate(418 302) scale(1.9) rotate(-22)" fill="url(#puffShade)"/>
+    <use href="#puff" transform="translate(220 250) scale(2.1) rotate(30)" fill="url(#puffLight)"/>
+    <use href="#puff" transform="translate(300 244) scale(2.25) rotate(-18)" fill="url(#puffShade)"/>
+    <use href="#puff" transform="translate(360 258) scale(1.95) rotate(12)" fill="url(#puffLight)"/>
+    <use href="#puff" transform="translate(262 218) scale(1.8) rotate(-8)" fill="url(#puffShade)"/>
+    <use href="#puff" transform="translate(326 214) scale(1.6) rotate(20)" fill="url(#puffLight)"/>
+  </g>
+
+  <!-- scattered nuts -->
+  <use href="#puff" transform="translate(66 398) scale(2.1) rotate(10)" fill="url(#puffLight)"/>
+  <use href="#puff" transform="translate(498 392) scale(2.3) rotate(-16)" fill="url(#puffShade)"/>
+  <use href="#puff" transform="translate(520 366) scale(1.5) rotate(30)" fill="url(#puffLight)"/>
+  <use href="#puff" transform="translate(44 362) scale(1.4) rotate(-24)" fill="url(#puffShade)"/>
+
+  <!-- fine botanical accents -->
+  <g stroke="#C2A05C" stroke-width="1.1" fill="none" opacity="0.85" stroke-linecap="round">
+    <path d="M84 120 C120 150 128 196 118 244"/>
+    <path d="M102 158 C88 150 74 150 64 156 C74 166 92 168 102 158 Z"/>
+    <path d="M118 196 C134 188 150 190 158 198 C146 206 128 206 118 196 Z"/>
+    <path d="M476 96 C444 128 438 174 448 222"/>
+    <path d="M458 134 C472 126 486 126 496 132 C486 142 468 144 458 134 Z"/>
+    <path d="M444 172 C428 164 412 166 404 174 C416 182 434 182 444 172 Z"/>
+  </g>
+  <g fill="#C2A05C" opacity="0.9">
+    <circle cx="150" cy="86" r="2.4"/>
+    <circle cx="412" cy="72" r="2"/>
+    <circle cx="280" cy="56" r="2.6"/>
+  </g>
+</svg>

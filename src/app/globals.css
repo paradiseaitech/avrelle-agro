@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   AVRELLE AGRO — design system
+   Makhana cream · Lotus leaf green · Roasted gold · Earth tones
+   ========================================================================== */
+
+@theme {
+  /* Lotus leaf green (primary / trust) */
+  --color-forest-950: #152d1d;
+  --color-forest-900: #1a3723;
+  --color-forest-800: #1f4d2b;
+  --color-forest-700: #275a36;
+  --color-forest-600: #326b43;
+  --color-forest-500: #3d7c4f;
+  --color-forest-400: #5a9468;
+  --color-forest-300: #82b38f;
+  --color-forest-200: #b9d5c0;
+  --color-forest-100: #e0ebe4;
+  --color-forest-50: #f2f7f4;
+
+  /* Roasted gold (appetite / CTA) */
+  --color-gold-700: #a37d36;
+  --color-gold-600: #b88d3f;
+  --color-gold-500: #d4a052;
+  --color-gold-400: #dcaf6b;
+  --color-gold-300: #e7c894;
+  --color-gold-200: #f0dfbd;
+  --color-gold-100: #f7efe0;
+
+  /* Makhana cream & warm backgrounds */
+  --color-ivory-50: #fffcf6;
+  --color-ivory-100: #faf6ee;
+  --color-ivory-200: #f5efe3;
+  --color-ivory-300: #ebe3d2;
+
+  /* Light parchment & earth (product sections/cards) */
+  --color-beige-100: #f2e9d8;
+  --color-beige-200: #e7decc;
+  --color-beige-300: #d8ccb5;
+  --color-beige-400: #c5b69a;
+  --color-earth-500: #6b5d4d;
+  --color-earth-600: #584b3d;
+
+  /* Ink / text */
+  --color-ink-900: #25221d;
+  --color-ink-800: #2b2b2b;
+  --color-ink-700: #3f382f;
+  --color-ink-600: #544a3f;
+  --color-ink-500: #6b5d4d;
+  --color-ink-400: #8a7d6a;
+
+  /* Semantic */
+  --color-danger-600: #9e2b25;
+  --color-danger-500: #bc3a33;
+  --color-danger-100: #f7e5e3;
+  --color-success-700: #1f6b43;
+  --color-success-100: #e2f2e8;
+  --color-warning-700: #8a6410;
+  --color-warning-100: #f9efd6;
+
+  /* Typography */
+  --font-serif: var(--font-fraunces), "Georgia", "Times New Roman", serif;
+  --font-sans: var(--font-inter), "Segoe UI", system-ui, sans-serif;
+
+  /* Refinements */
+  --tracking-luxe: 0.28em;
+  --shadow-luxe: 0 1px 2px rgb(16 42 32 / 0.06), 0 8px 24px -12px rgb(16 42 32 / 0.18);
+  --shadow-luxe-lg: 0 2px 4px rgb(16 42 32 / 0.08), 0 24px 48px -24px rgb(16 42 32 / 0.28);
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ivory-50);
+  color: var(--color-ink-800);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-gold-300);
+  color: var(--color-forest-900);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-forest-600);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Typography helpers
+   -------------------------------------------------------------------------- */
+
+@utility text-display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  color: var(--color-forest-900);
+}
+
+@utility text-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-luxe);
+  text-transform: uppercase;
+  color: var(--color-gold-700);
+}
+
+@utility text-rule {
+  content: "";
+}
+
+/* Fine gold hairline used as section ornament */
+@utility ornament-line {
+  display: inline-block;
+  width: 3.5rem;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold-500), transparent);
+}
+
+/* --------------------------------------------------------------------------
+   Components
+   -------------------------------------------------------------------------- */
+
+@layer components {
+  .btn,
+  .btn-primary,
+  .btn-gold,
+  .btn-outline,
+  .btn-outline-gold {
+    @apply inline-flex items-center justify-center gap-2 font-medium tracking-wide transition-colors duration-200 disabled:pointer-events-none disabled:opacity-50;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .btn-primary {
+    @apply bg-forest-800 text-ivory-100 hover:bg-forest-700 active:bg-forest-900;
+    padding: 0.875rem 1.75rem;
+  }
+
+  .btn-gold {
+    @apply bg-gold-500 text-white hover:bg-gold-400 active:bg-gold-600;
+    padding: 0.875rem 1.75rem;
+  }
+
+  .btn-outline {
+    @apply border border-forest-800/30 text-forest-800 hover:border-forest-800 hover:bg-forest-800/5;
+    padding: 0.875rem 1.75rem;
+  }
+
+  .btn-outline-gold {
+    @apply border border-gold-500/60 text-gold-700 hover:border-gold-600 hover:bg-gold-500/10;
+    padding: 0.875rem 1.75rem;
+  }
+
+  .btn-sm,
+  .btn-primary.btn-sm,
+  .btn-gold.btn-sm,
+  .btn-outline.btn-sm,
+  .btn-outline-gold.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.6875rem;
+  }
+
+  .field {
+    @apply w-full border border-beige-300 bg-ivory-50 px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-ink-400 transition-colors;
+    border-radius: 2px;
+  }
+
+  .field:focus {
+    @apply border-forest-600 outline-none ring-1 ring-forest-600/30;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-ink-600;
+  }
+
+  .card-luxe {
+    @apply border border-beige-200 bg-beige-100;
+    border-radius: 2px;
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Utilities
+   -------------------------------------------------------------------------- */
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Botanical hairline pattern used on dark sections */
+@utility botanical-grid {
+  background-image:
+    radial-gradient(circle at 25% 25%, rgb(212 185 120 / 0.08) 0, transparent 42%),
+    radial-gradient(circle at 75% 70%, rgb(212 185 120 / 0.06) 0, transparent 45%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
