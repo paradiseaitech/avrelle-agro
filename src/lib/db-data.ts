@@ -30,49 +30,68 @@ export interface PincodeResult {
 }
 
 export const getSettings = cache(async () => {
-  const rows = await db.select().from(schema.siteSettings);
-  const map = new Map(rows.map((r) => [r.key, r.value]));
+  try {
+    const rows = await db.select().from(schema.siteSettings);
+    const map = new Map(rows.map((r) => [r.key, r.value]));
 
-  const announcement = {
-    ...DEFAULT_ANNOUNCEMENT,
-    ...(map.get(SETTING_KEYS.announcement) as Partial<AnnouncementSettings> | undefined),
-  };
-  const shipping = {
-    ...DEFAULT_SHIPPING,
-    ...(map.get(SETTING_KEYS.shipping) as Partial<ShippingSettings> | undefined),
-  };
-  const business = {
-    ...defaultBusinessSettings(),
-    ...(map.get(SETTING_KEYS.business) as Partial<BusinessSettings> | undefined),
-  };
-  const hero = {
-    ...DEFAULT_HERO,
-    ...(map.get(SETTING_KEYS.hero) as Partial<HeroSettings> | undefined),
-  };
-  const homeContent = {
-    ...DEFAULT_HOME_CONTENT,
-    ...(map.get(SETTING_KEYS.homeContent) as Partial<HomeContentSettings> | undefined),
-  };
+    const announcement = {
+      ...DEFAULT_ANNOUNCEMENT,
+      ...(map.get(SETTING_KEYS.announcement) as Partial<AnnouncementSettings> | undefined),
+    };
+    const shipping = {
+      ...DEFAULT_SHIPPING,
+      ...(map.get(SETTING_KEYS.shipping) as Partial<ShippingSettings> | undefined),
+    };
+    const business = {
+      ...defaultBusinessSettings(),
+      ...(map.get(SETTING_KEYS.business) as Partial<BusinessSettings> | undefined),
+    };
+    const hero = {
+      ...DEFAULT_HERO,
+      ...(map.get(SETTING_KEYS.hero) as Partial<HeroSettings> | undefined),
+    };
+    const homeContent = {
+      ...DEFAULT_HOME_CONTENT,
+      ...(map.get(SETTING_KEYS.homeContent) as Partial<HomeContentSettings> | undefined),
+    };
 
-  return { announcement, shipping, business, hero, homeContent };
+    return { announcement, shipping, business, hero, homeContent };
+  } catch (err) {
+    console.warn("getSettings fallback to defaults:", err);
+    return {
+      announcement: DEFAULT_ANNOUNCEMENT,
+      shipping: DEFAULT_SHIPPING,
+      business: defaultBusinessSettings(),
+      hero: DEFAULT_HERO,
+      homeContent: DEFAULT_HOME_CONTENT,
+    };
+  }
 });
 
 /* ----------------------------------------------------------------- grades */
 
 export const listPublishedGrades = cache(async () => {
-  return db
-    .select()
-    .from(schema.grades)
-    .where(eq(schema.grades.published, true))
-    .orderBy(schema.grades.sortOrder);
+  try {
+    return await db
+      .select()
+      .from(schema.grades)
+      .where(eq(schema.grades.published, true))
+      .orderBy(schema.grades.sortOrder);
+  } catch {
+    return [];
+  }
 });
 
 export const getGradeBySlug = cache(async (slug: string) => {
-  const [row] = await db
-    .select()
-    .from(schema.grades)
-    .where(and(eq(schema.grades.slug, slug), eq(schema.grades.published, true)));
-  return row ?? null;
+  try {
+    const [row] = await db
+      .select()
+      .from(schema.grades)
+      .where(and(eq(schema.grades.slug, slug), eq(schema.grades.published, true)));
+    return row ?? null;
+  } catch {
+    return null;
+  }
 });
 
 /* --------------------------------------------------------------- products */
@@ -135,10 +154,14 @@ export function getVariantPackagingImage(
 }
 
 async function fetchProductRows() {
-  return db.query.products.findMany({
-    where: and(eq(schema.products.status, "published"), eq(schema.products.retailAvailable, true)),
-    with: { variants: true, grade: true },
-  });
+  try {
+    return await db.query.products.findMany({
+      where: and(eq(schema.products.status, "published"), eq(schema.products.retailAvailable, true)),
+      with: { variants: true, grade: true },
+    });
+  } catch {
+    return [];
+  }
 }
 
 function toListItem(p: {
@@ -281,42 +304,45 @@ export interface ProductDetail extends ProductListItem {
 }
 
 export const getProductBySlug = cache(async (slug: string): Promise<ProductDetail | null> => {
-  const [row] = await db.query.products.findMany({
-    where: and(eq(schema.products.slug, slug), eq(schema.products.status, "published")),
-    with: { variants: true, grade: true },
-  });
-  if (!row) return null;
+  try {
+    const [row] = await db.query.products.findMany({
+      where: and(eq(schema.products.slug, slug), eq(schema.products.status, "published")),
+      with: { variants: true, grade: true },
+    });
+    if (!row) return null;
 
-  const item = toListItem(row);
-  const gradeSlug = item.gradeSlug ?? "6-suta";
+    const item = toListItem(row);
 
-  // Build the complete array of images starting with active variant images in order of weight
-  const variantImages = item.variants
-    .map((v) => v.image)
-    .filter((img): img is string => Boolean(img));
+    // Build the complete array of images starting with active variant images in order of weight
+    const variantImages = item.variants
+      .map((v) => v.image)
+      .filter((img): img is string => Boolean(img));
 
-  const standardPackImages = [
-    "/brand/100g.png",
-    "/brand/200g.png",
-    "/brand/400g.png",
-    "/brand/500g.png",
-    "/brand/1kg.png",
-  ];
+    const standardPackImages = [
+      "/brand/100g.png",
+      "/brand/200g.png",
+      "/brand/400g.png",
+      "/brand/500g.png",
+      "/brand/1kg.png",
+    ];
 
-  const images = Array.from(
-    new Set([
-      ...(variantImages.length ? variantImages : standardPackImages),
-      "/brand/grades/size.jpeg",
-    ]),
-  );
+    const images = Array.from(
+      new Set([
+        ...(variantImages.length ? variantImages : standardPackImages),
+        "/brand/grades/size.jpeg",
+      ]),
+    );
 
-  return {
-    ...item,
-    description: row.description,
-    storageInstructions: row.storageInstructions,
-    ingredients: row.ingredients,
-    images,
-  };
+    return {
+      ...item,
+      description: row.description,
+      storageInstructions: row.storageInstructions,
+      ingredients: row.ingredients,
+      images,
+    };
+  } catch {
+    return null;
+  }
 });
 
 export const listRelatedProducts = cache(
@@ -332,11 +358,15 @@ export const listRelatedProducts = cache(
 /* ------------------------------------------------------- pincode & shipping */
 
 export const getPincodeRule = cache(async (pincode: string) => {
-  const [rule] = await db
-    .select()
-    .from(schema.pincodeRules)
-    .where(eq(schema.pincodeRules.pincode, pincode));
-  return rule ?? null;
+  try {
+    const [rule] = await db
+      .select()
+      .from(schema.pincodeRules)
+      .where(eq(schema.pincodeRules.pincode, pincode));
+    return rule ?? null;
+  } catch {
+    return null;
+  }
 });
 
 export async function checkPincode(

@@ -6,6 +6,8 @@ import { getCustomerAddresses } from "@/lib/customer-data";
 import { CheckoutForm } from "@/components/checkout/checkout-form";
 import { CheckoutAuthPrompt } from "@/components/checkout/checkout-auth-prompt";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Checkout — Cash on Delivery",
   description: "Complete your AVRELLE AGRO makhana order with Cash on Delivery.",

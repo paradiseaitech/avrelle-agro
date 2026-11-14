@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import type { PoolConfig } from "pg";
 import { Pool } from "pg";
@@ -9,18 +10,12 @@ import * as schema from "./schema";
 /**
  * Database access for the whole application.
  *
- * - When `DATABASE_URL` is set (development against Supabase, or production
- *   Postgres), node-postgres is used with a pooled connection.
+ * - When `DATABASE_URL` is set (production Postgres, Neon, Supabase),
+ *   node-postgres is used with a pooled connection.
  * - Otherwise a zero-install embedded PostgreSQL (PGlite) is used so the
- *   full application runs locally without any external services.
+ *   full application runs locally or falls back cleanly in serverless build environments.
  */
 
-/**
- * Both adapters expose the same Drizzle query builder API for the operations
- * this application uses. We type against the node-postgres adapter so call
- * signatures (e.g. `.returning({...})`, transactions) stay consistent, and
- * cast the PGlite adapter at the boundary.
- */
 export type AppDatabase = NodePgDatabase<typeof schema>;
 
 type GlobalWithDb = typeof globalThis & {
@@ -58,8 +53,19 @@ export function getDb(): AppDatabase {
   }
 
   if (!g.__avrellePgliteDb) {
-    const dir = path.join(process.cwd(), ".data", "pglite");
-    g.__avrellePglite = new PGlite(dir);
+    const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+    const dataDir = isServerless
+      ? path.join("/tmp", ".data", "pglite")
+      : path.join(process.cwd(), ".data", "pglite");
+
+    try {
+      fs.mkdirSync(dataDir, { recursive: true });
+      g.__avrellePglite = new PGlite(dataDir);
+    } catch {
+      // In restricted serverless build environments where disk write is prohibited, fallback to in-memory
+      g.__avrellePglite = new PGlite();
+    }
+
     g.__avrellePgliteDb = drizzlePglite(g.__avrellePglite, {
       schema,
     }) as unknown as AppDatabase;
