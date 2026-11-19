@@ -36,6 +36,11 @@ export function ProductCard({ product }: { product: ProductListItem }) {
   const currentImage = selectedVariant?.image ?? product.image;
   const currentPrice = selectedVariant ? formatINR(selectedVariant.pricePaise) : "Price on request";
 
+  const isGIEligible =
+    !["powder", "flour", "flavoured", "flavored", "mix"].some((k) =>
+      product.name.toLowerCase().includes(k),
+    ) && product.name.toLowerCase().includes("makhana");
+
   return (
     <article className="group card-luxe flex flex-col overflow-hidden transition-shadow hover:shadow-luxe">
       {/* Product Image Link */}
@@ -57,6 +62,11 @@ export function ProductCard({ product }: { product: ProductListItem }) {
         <span className="absolute left-3 top-3 bg-forest-900/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-gold-300 shadow-xs">
           {selectedVariant ? selectedVariant.label : "Pure Makhana"}
         </span>
+        {isGIEligible && (
+          <span className="absolute bottom-2 left-3 rounded bg-forest-950/90 px-2 py-0.5 text-[9px] font-semibold text-gold-300 border border-gold-500/40 shadow-xs">
+            GI-696 Authorized User
+          </span>
+        )}
         {soldOut && (
           <span className="absolute right-3 top-3 bg-ivory-50/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-danger-700 shadow-xs">
             Sold out

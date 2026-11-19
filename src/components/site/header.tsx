@@ -5,59 +5,83 @@ import { AnnouncementBar } from "@/components/site/announcement-bar";
 import { CartLink } from "@/components/site/cart-link";
 import { UserAccountLink } from "@/components/site/user-account-link";
 import { DesktopNav, HeaderSearch, MobileNavToggle } from "@/components/site/nav";
+import { Phone, ShoppingBag } from "lucide-react";
 
 export async function SiteHeader() {
   const { business } = await getSettings();
 
   return (
-    <header className="sticky top-0 z-40">
+    <header className="sticky top-0 z-40 w-full">
       <AnnouncementBar />
-      <div className="border-b border-beige-200 bg-ivory-50/95 backdrop-blur supports-[backdrop-filter]:bg-ivory-50/85">
-        <div className="section-shell flex h-[72px] items-center justify-between gap-4">
-          <div className="flex items-center gap-1 sm:gap-3">
+      <div className="border-b border-beige-300/80 bg-ivory-50/95 backdrop-blur-md supports-[backdrop-filter]:bg-ivory-50/90 transition-all">
+        <div className="section-shell flex h-[70px] sm:h-[74px] items-center justify-between gap-3 sm:gap-4">
+          
+          {/* Left: Mobile Nav Toggle & Brand Lockup */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <MobileNavToggle whatsapp={business.whatsapp} />
-            <Link href="/" className="flex items-center gap-3" aria-label="Super Makhana home">
-              {/* Logo mark remains unchanged */}
+            <Link 
+              href="/" 
+              className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none" 
+              aria-label="AVRELLE AGRO PVT LTD home"
+            >
               <img
                 src="/brand/logo-mark.svg"
                 alt=""
-                width={44}
-                height={44}
-                className="h-10 w-10 sm:h-11 sm:w-11"
+                width={40}
+                height={40}
+                className="h-9 w-9 sm:h-10 sm:w-10 object-contain transition-transform group-hover:scale-105"
                 aria-hidden="true"
               />
-              <span className="flex flex-col leading-tight">
-                <span className="font-serif text-[19px] font-bold tracking-[0.14em] text-forest-900 sm:text-[22px]">
-                  SUPER MAKHANA
+              <span className="flex flex-col leading-none">
+                <span className="font-serif text-[17px] sm:text-[19px] lg:text-[20px] font-bold tracking-[0.12em] text-forest-950">
+                  AVRELLE AGRO
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-gold-700 mt-1 hidden sm:inline-block">
+                  Mithila Makhana · Purnia
                 </span>
               </span>
             </Link>
           </div>
 
-          <DesktopNav />
+          {/* Center: Desktop Navigation with Smart Dropdowns */}
+          <div className="hidden lg:flex items-center justify-center flex-1 px-2">
+            <DesktopNav />
+          </div>
 
-          <div className="flex items-center gap-1 sm:gap-2">
-            <Suspense fallback={<div className="hidden h-9 w-56 xl:block" />}>
+          {/* Right: Actions (Search, Shop Button, Phone, Account, Cart) */}
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+            <Suspense fallback={<div className="hidden 2xl:block h-9 w-28" />}>
               <HeaderSearch />
             </Suspense>
+
+            {/* Quick Shop CTA Pill (Desktop XL+) */}
+            <Link
+              href="/shop"
+              className="hidden xl:inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-3.5 py-1.5 text-[11.5px] font-bold uppercase tracking-wider text-forest-950 shadow-xs hover:bg-gold-400 active:scale-98 transition-all"
+            >
+              <ShoppingBag className="h-3.5 w-3.5" />
+              <span>Shop Retail</span>
+            </Link>
+
+            {/* Phone link on 2XL screens */}
             <a
               href={`tel:${business.phone.replace(/\s/g, "")}`}
-              className="hidden items-center gap-2 px-2 text-[13px] font-medium text-forest-800 transition-colors hover:text-gold-700 xl:flex"
+              className="hidden 2xl:flex items-center gap-1.5 px-2 text-[12.5px] font-medium text-forest-900/80 hover:text-gold-700 transition-colors"
               aria-label={`Call ${business.phone}`}
             >
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-                <path
-                  d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              {business.phone}
+              <Phone className="h-3.5 w-3.5 text-gold-700" />
+              <span>{business.phone}</span>
             </a>
+
+            {/* Account Icon Link */}
             <Suspense fallback={<div className="h-10 w-10" />}>
               <UserAccountLink />
             </Suspense>
+
+            {/* Cart Link with Count */}
             <CartLink />
           </div>
+
         </div>
       </div>
     </header>

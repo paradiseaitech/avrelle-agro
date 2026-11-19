@@ -9,6 +9,8 @@ export const SETTING_KEYS = {
   business: "business",
   hero: "hero",
   homeContent: "home_content",
+  giRecognition: "gi_recognition",
+  companyHistory: "company_history",
 } as const;
 
 export type SettingKey = (typeof SETTING_KEYS)[keyof typeof SETTING_KEYS];
@@ -60,9 +62,33 @@ export interface HomeContentSettings {
   showSampleNotice: boolean;
 }
 
+export interface GIRecognitionSettings {
+  enabled: boolean;
+  giNumber: string;
+  certNumber: string;
+  authorizedUserName: string;
+  certificateFileUrl: string | null;
+  badgeVisible: boolean;
+  heroAnnouncementEnabled: boolean;
+  productDisplayEnabled: boolean;
+  announcementHeadline: string;
+  announcementText: string;
+}
+
+export interface CompanyHistorySettings {
+  beginningHeadline: string;
+  beginningText: string;
+  foundationHeadline: string;
+  foundationText: string;
+  growthHeadline: string;
+  growthText: string;
+  todayHeadline: string;
+  todayText: string;
+}
+
 export const DEFAULT_ANNOUNCEMENT: AnnouncementSettings = {
   enabled: true,
-  text: "Premium Makhana from Bihar  |  Retail & Bulk Enquiries Welcome",
+  text: "Officially Recognized Authorized User of Mithila Makhana (GI-696) | AU/48155/GI/696/76",
 };
 
 export const DEFAULT_SHIPPING: ShippingSettings = {
@@ -76,8 +102,8 @@ export const DEFAULT_SHIPPING: ShippingSettings = {
 
 export function defaultBusinessSettings(): BusinessSettings {
   return {
-    displayName: "AVRELLE AGRO PVT LTD",
-    tagline: "Quality. Consistency. Trust.",
+    displayName: "AVRELLE AGRO PRODUCTS PRIVATE LIMITED",
+    tagline: "Rooted in Mithila. Bringing Authentic Makhana to the World.",
     addressLine: "Purnea",
     city: "Purnea",
     state: "Bihar",
@@ -90,15 +116,45 @@ export function defaultBusinessSettings(): BusinessSettings {
 }
 
 export const DEFAULT_HERO: HeroSettings = {
-  headline: "The Finest Makhana, Rooted in Bihar.",
-  subheadline: "Discover carefully graded fox nuts for everyday snacking, retail, and bulk supply.",
+  headline: "Rooted in Mithila. Bringing Authentic Makhana to the World.",
+  subheadline:
+    "From the makhana heartland of Bihar to modern markets, AVRELLE AGRO is committed to celebrating Mithila Makhana's heritage through sourcing, grading, processing, and premium product offerings.",
+};
+
+export const DEFAULT_GI_RECOGNITION: GIRecognitionSettings = {
+  enabled: true,
+  giNumber: "GI-696",
+  certNumber: "AU/48155/GI/696/76",
+  authorizedUserName: "AVRELLE AGRO PRODUCTS PRIVATE LIMITED",
+  certificateFileUrl: null,
+  badgeVisible: true,
+  heroAnnouncementEnabled: true,
+  productDisplayEnabled: true,
+  announcementHeadline: "An Officially Recognized Authorized User of Mithila Makhana",
+  announcementText:
+    "AVRELLE AGRO PRODUCTS PRIVATE LIMITED is proud to be recognized as an Authorized User of Mithila Makhana (GI-696), celebrating the authentic heritage, geographical identity, and agricultural legacy of Bihar.",
+};
+
+export const DEFAULT_COMPANY_HISTORY: CompanyHistorySettings = {
+  beginningHeadline: "Beginning",
+  beginningText:
+    "Founded with a vision to elevate one of India’s most nutrient-dense superfoods from local harvests to global pantries, Avrelle Agro Products Private Limited began its journey in the heartland of makhana cultivation.\n\nRecognizing the immense potential of fox nuts—and the need for modernized, hygienic, and transparent processing—we set out to bridge the gap between traditional farming communities and quality-conscious consumers.",
+  foundationHeadline: "Our Foundation",
+  foundationText:
+    "From day one, our foundation has been built on direct collaboration with local farmers and harvesters across Bihar’s premier makhana-producing belt.\n\nProudly recognized as an Authorized User of Mithila Makhana (GI-696), we uphold the authentic regional heritage, unique agro-climatic identity, and traditional cultivation practices that distinguish genuine Mithila Makhana.\n\nBy working closely at the grassroots level, we aim to ensure origin traceability and fair value for local cultivators while preserving time-honored pond harvesting and seed-popping expertise.",
+  growthHeadline: "Our Growth and Capabilities",
+  growthText:
+    "As demand grew, we expanded our capabilities from raw agricultural sourcing into end-to-end processing, grading, and packaging.\n\nBy integrating clean, food-grade sorting, roasting, and moisture-controlled packaging infrastructure, we transform GI-eligible harvests into export-ready, shelf-stable products.\n\nEvery batch undergoes quality checks for size, crunch, purity, and freshness—delivering authenticity across both bulk B2B supplies and retail lines like Super Makhana Raw.",
+  todayHeadline: "Where We Stand Today",
+  todayText:
+    "Today, Avrelle Agro Products is building its presence across the makhana value chain, supplying traceable fox nuts to domestic and international markets.\n\nGuided by integrity, regional pride, and continuous innovation, we remain committed to supporting rural livelihoods while bringing authentic Mithila Makhana to the world.",
 };
 
 export const DEFAULT_HOME_CONTENT: HomeContentSettings = {
-  storyHeading: "Rooted in Purnea, Focused on Makhana",
+  storyHeading: "Rooted in Mithila, Focused on Makhana",
   storyBody:
-    "Rooted in Purnea, Bihar, AVRELLE AGRO PVT LTD focuses on makhana and fox nuts, serving customers and business buyers seeking clearly specified grades and dependable communication.",
-  showSampleNotice: true,
+    "Rooted in Purnea, Bihar, AVRELLE AGRO PRODUCTS PRIVATE LIMITED focuses on makhana and fox nuts, serving domestic customers and international business buyers seeking clearly specified grades, authentic origin traceability, and dependable partnership.",
+  showSampleNotice: false,
 };
 
 export const GRADE_REFERENCE = [

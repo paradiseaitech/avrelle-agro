@@ -6,6 +6,8 @@ import { requireAdmin } from "@/lib/auth";
 import {
   AnnouncementForm,
   BusinessForm,
+  CompanyHistoryForm,
+  GIRecognitionForm,
   HeroForm,
   HomeContentForm,
   PasswordChangeForm,
@@ -37,6 +39,37 @@ export default async function AdminSettingsPage() {
       </header>
 
       <div className="grid gap-6 xl:grid-cols-2">
+        <section className="border-2 border-gold-500/40 bg-white p-5 sm:p-6 shadow-sm xl:col-span-2">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-beige-200 pb-3">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-gold-700">Official Recognition</span>
+              <h2 className="font-serif text-[22px] font-bold text-forest-900">Mithila Makhana GI Recognition (GI-696)</h2>
+            </div>
+            <span className="font-mono text-[12px] font-semibold text-gold-800">
+              Certificate: {settings.giRecognition.certNumber}
+            </span>
+          </div>
+          <p className="mt-2 text-[12.5px] text-ink-600">
+            Manage your official Authorized User status, certificate upload (PDF/image), visibility of badges, and product-level GI panels without modifying code.
+          </p>
+          <div className="mt-5">
+            <GIRecognitionForm value={settings.giRecognition} />
+          </div>
+        </section>
+
+        <section className="border border-beige-200 bg-white p-5 sm:p-6 xl:col-span-2">
+          <div className="border-b border-beige-200 pb-3">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-forest-800">Authoritative Brand Story</span>
+            <h2 className="font-serif text-[22px] font-bold text-forest-900">Company History (/about page)</h2>
+          </div>
+          <p className="mt-2 text-[12.5px] text-ink-600">
+            Manage the client-provided company history chapters: Beginning, Our Foundation, Our Growth and Capabilities, and Where We Stand Today.
+          </p>
+          <div className="mt-5">
+            <CompanyHistoryForm value={settings.companyHistory} />
+          </div>
+        </section>
+
         <section className="border border-beige-200 bg-white p-5 sm:p-6">
           <h2 className="font-serif text-[21px] text-forest-900">Announcement bar</h2>
           <div className="mt-4">

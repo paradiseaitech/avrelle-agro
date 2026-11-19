@@ -1,9 +1,11 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import {
   saveAnnouncementAction,
   saveBusinessAction,
+  saveCompanyHistoryAction,
+  saveGIRecognitionAction,
   saveHeroAction,
   saveHomeContentAction,
   savePincodeAction,
@@ -13,11 +15,15 @@ import {
 import { changePasswordAction, type PasswordState } from "@/lib/actions/admin-auth";
 import {
   DEFAULT_ANNOUNCEMENT,
+  DEFAULT_COMPANY_HISTORY,
+  DEFAULT_GI_RECOGNITION,
   DEFAULT_HERO,
   DEFAULT_HOME_CONTENT,
   DEFAULT_SHIPPING,
   type AnnouncementSettings,
   type BusinessSettings,
+  type CompanyHistorySettings,
+  type GIRecognitionSettings,
   type HeroSettings,
   type HomeContentSettings,
   type ShippingSettings,
@@ -365,6 +371,268 @@ export function PasswordChangeForm() {
           {pending ? "Updating…" : "Update Password"}
         </button>
       )}
+    </form>
+  );
+}
+
+/* -------------------------------------------------------- GI recognition */
+
+export function GIRecognitionForm({ value }: { value: GIRecognitionSettings }) {
+  const [state, action, pending] = useActionState(saveGIRecognitionAction, initial);
+  const [certUrl, setCertUrl] = useState<string>(value.certificateFileUrl || "");
+  const [uploading, setUploading] = useState(false);
+  const [uploadErr, setUploadErr] = useState<string | null>(null);
+
+  async function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    setUploadErr(null);
+
+    const fd = new FormData();
+    fd.append("file", file);
+
+    try {
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: fd,
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "File upload failed.");
+      }
+      const data = await res.json();
+      if (data.url) {
+        setCertUrl(data.url);
+      }
+    } catch (err: any) {
+      setUploadErr(err.message || "Upload failed.");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  return (
+    <form action={action} className="space-y-4">
+      <div className="grid gap-3 sm:grid-cols-2">
+        <label className="flex items-center gap-2 text-[13px] text-ink-800">
+          <input type="checkbox" name="enabled" defaultChecked={value.enabled} />
+          <span>Enable GI Recognition</span>
+        </label>
+        <label className="flex items-center gap-2 text-[13px] text-ink-800">
+          <input type="checkbox" name="badgeVisible" defaultChecked={value.badgeVisible} />
+          <span>Display Badges Across Site</span>
+        </label>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <label className="flex items-center gap-2 text-[13px] text-ink-800">
+          <input
+            type="checkbox"
+            name="heroAnnouncementEnabled"
+            defaultChecked={value.heroAnnouncementEnabled}
+          />
+          <span>Show Homepage GI Banner</span>
+        </label>
+        <label className="flex items-center gap-2 text-[13px] text-ink-800">
+          <input
+            type="checkbox"
+            name="productDisplayEnabled"
+            defaultChecked={value.productDisplayEnabled}
+          />
+          <span>Show Product-Level GI Panel</span>
+        </label>
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label htmlFor="gi-number" className="field-label">Registered GI Reference</label>
+          <input
+            id="gi-number"
+            name="giNumber"
+            defaultValue={value.giNumber || DEFAULT_GI_RECOGNITION.giNumber}
+            className="field font-mono"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="cert-number" className="field-label">Authorized User Certificate Number</label>
+          <input
+            id="cert-number"
+            name="certNumber"
+            defaultValue={value.certNumber || DEFAULT_GI_RECOGNITION.certNumber}
+            className="field font-mono"
+            required
+          />
+        </div>
+      </div>
+
+      <div>
+        <label htmlFor="auth-user-name" className="field-label">Authorized User Legal Name</label>
+        <input
+          id="auth-user-name"
+          name="authorizedUserName"
+          defaultValue={value.authorizedUserName || DEFAULT_GI_RECOGNITION.authorizedUserName}
+          className="field"
+          required
+        />
+      </div>
+
+      <div>
+        <label htmlFor="cert-url" className="field-label">Certificate File / Document URL</label>
+        <div className="flex gap-2">
+          <input
+            id="cert-url"
+            name="certificateFileUrl"
+            value={certUrl}
+            onChange={(e) => setCertUrl(e.target.value)}
+            placeholder="e.g. /uploads/... or https://..."
+            className="field flex-1"
+          />
+          <label className="btn-outline btn-sm cursor-pointer shrink-0 flex items-center">
+            <span>{uploading ? "Uploading…" : "Upload Doc/PDF"}</span>
+            <input
+              type="file"
+              accept=".pdf,.png,.jpg,.jpeg,.webp"
+              onChange={handleFileUpload}
+              className="sr-only"
+              disabled={uploading}
+            />
+          </label>
+        </div>
+        {uploadErr && <p className="text-[12px] text-danger-600 mt-1">{uploadErr}</p>}
+        {certUrl && (
+          <p className="text-[11.5px] text-ink-500 mt-1">
+            Active file: <span className="font-mono text-forest-800">{certUrl}</span>
+          </p>
+        )}
+      </div>
+
+      <div>
+        <label htmlFor="ann-head" className="field-label">Homepage Announcement Headline</label>
+        <input
+          id="ann-head"
+          name="announcementHeadline"
+          defaultValue={value.announcementHeadline || DEFAULT_GI_RECOGNITION.announcementHeadline}
+          className="field"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="ann-body" className="field-label">Homepage Announcement Body</label>
+        <textarea
+          id="ann-body"
+          name="announcementText"
+          defaultValue={value.announcementText || DEFAULT_GI_RECOGNITION.announcementText}
+          rows={3}
+          className="field"
+        />
+      </div>
+
+      <Feedback state={state} />
+      <button type="submit" disabled={pending} className="btn-primary btn-sm">
+        {pending ? "Saving…" : "Save GI Recognition Settings"}
+      </button>
+    </form>
+  );
+}
+
+/* ----------------------------------------------------- company history */
+
+export function CompanyHistoryForm({ value }: { value: CompanyHistorySettings }) {
+  const [state, action, pending] = useActionState(saveCompanyHistoryAction, initial);
+
+  return (
+    <form action={action} className="space-y-6">
+      {/* Chapter 1: Beginning */}
+      <div className="border-b border-beige-200 pb-4">
+        <label htmlFor="ch-beg-h" className="field-label">Chapter 01 Headline</label>
+        <input
+          id="ch-beg-h"
+          name="beginningHeadline"
+          defaultValue={value.beginningHeadline || DEFAULT_COMPANY_HISTORY.beginningHeadline}
+          className="field"
+          required
+        />
+        <label htmlFor="ch-beg-t" className="field-label mt-3">Chapter 01 Body (Beginning)</label>
+        <textarea
+          id="ch-beg-t"
+          name="beginningText"
+          defaultValue={value.beginningText || DEFAULT_COMPANY_HISTORY.beginningText}
+          rows={4}
+          className="field leading-relaxed text-[13px]"
+          required
+        />
+      </div>
+
+      {/* Chapter 2: Foundation */}
+      <div className="border-b border-beige-200 pb-4">
+        <label htmlFor="ch-fnd-h" className="field-label">Chapter 02 Headline</label>
+        <input
+          id="ch-fnd-h"
+          name="foundationHeadline"
+          defaultValue={value.foundationHeadline || DEFAULT_COMPANY_HISTORY.foundationHeadline}
+          className="field"
+          required
+        />
+        <label htmlFor="ch-fnd-t" className="field-label mt-3">Chapter 02 Body (Our Foundation &amp; GI Recognition)</label>
+        <textarea
+          id="ch-fnd-t"
+          name="foundationText"
+          defaultValue={value.foundationText || DEFAULT_COMPANY_HISTORY.foundationText}
+          rows={5}
+          className="field leading-relaxed text-[13px]"
+          required
+        />
+      </div>
+
+      {/* Chapter 3: Growth */}
+      <div className="border-b border-beige-200 pb-4">
+        <label htmlFor="ch-grw-h" className="field-label">Chapter 03 Headline</label>
+        <input
+          id="ch-grw-h"
+          name="growthHeadline"
+          defaultValue={value.growthHeadline || DEFAULT_COMPANY_HISTORY.growthHeadline}
+          className="field"
+          required
+        />
+        <label htmlFor="ch-grw-t" className="field-label mt-3">Chapter 03 Body (Our Growth and Capabilities)</label>
+        <textarea
+          id="ch-grw-t"
+          name="growthText"
+          defaultValue={value.growthText || DEFAULT_COMPANY_HISTORY.growthText}
+          rows={5}
+          className="field leading-relaxed text-[13px]"
+          required
+        />
+      </div>
+
+      {/* Chapter 4: Today */}
+      <div>
+        <label htmlFor="ch-tdy-h" className="field-label">Chapter 04 Headline</label>
+        <input
+          id="ch-tdy-h"
+          name="todayHeadline"
+          defaultValue={value.todayHeadline || DEFAULT_COMPANY_HISTORY.todayHeadline}
+          className="field"
+          required
+        />
+        <label htmlFor="ch-tdy-t" className="field-label mt-3">Chapter 04 Body (Where We Stand Today)</label>
+        <textarea
+          id="ch-tdy-t"
+          name="todayText"
+          defaultValue={value.todayText || DEFAULT_COMPANY_HISTORY.todayText}
+          rows={4}
+          className="field leading-relaxed text-[13px]"
+          required
+        />
+      </div>
+
+      <Feedback state={state} />
+      <button type="submit" disabled={pending} className="btn-primary btn-sm">
+        {pending ? "Saving…" : "Save Company History"}
+      </button>
     </form>
   );
 }

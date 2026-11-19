@@ -4,6 +4,8 @@ import { cache } from "react";
 import { getDb, schema } from "@/db";
 import {
   DEFAULT_ANNOUNCEMENT,
+  DEFAULT_COMPANY_HISTORY,
+  DEFAULT_GI_RECOGNITION,
   DEFAULT_HERO,
   DEFAULT_HOME_CONTENT,
   DEFAULT_SHIPPING,
@@ -11,6 +13,8 @@ import {
   defaultBusinessSettings,
   type AnnouncementSettings,
   type BusinessSettings,
+  type CompanyHistorySettings,
+  type GIRecognitionSettings,
   type HeroSettings,
   type HomeContentSettings,
   type ShippingSettings,
@@ -54,8 +58,16 @@ export const getSettings = cache(async () => {
       ...DEFAULT_HOME_CONTENT,
       ...(map.get(SETTING_KEYS.homeContent) as Partial<HomeContentSettings> | undefined),
     };
+    const giRecognition = {
+      ...DEFAULT_GI_RECOGNITION,
+      ...(map.get(SETTING_KEYS.giRecognition) as Partial<GIRecognitionSettings> | undefined),
+    };
+    const companyHistory = {
+      ...DEFAULT_COMPANY_HISTORY,
+      ...(map.get(SETTING_KEYS.companyHistory) as Partial<CompanyHistorySettings> | undefined),
+    };
 
-    return { announcement, shipping, business, hero, homeContent };
+    return { announcement, shipping, business, hero, homeContent, giRecognition, companyHistory };
   } catch (err) {
     console.warn("getSettings fallback to defaults:", err);
     return {
@@ -64,6 +76,8 @@ export const getSettings = cache(async () => {
       business: defaultBusinessSettings(),
       hero: DEFAULT_HERO,
       homeContent: DEFAULT_HOME_CONTENT,
+      giRecognition: DEFAULT_GI_RECOGNITION,
+      companyHistory: DEFAULT_COMPANY_HISTORY,
     };
   }
 });

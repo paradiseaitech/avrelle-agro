@@ -102,6 +102,82 @@ export async function saveHomeContentAction(
   return { ok: true };
 }
 
+/* -------------------------------------------------------- GI recognition */
+
+export async function saveGIRecognitionAction(
+  _prev: SettingsResult,
+  formData: FormData,
+): Promise<SettingsResult> {
+  await requireManager();
+  const certNumber = str(formData, "certNumber").slice(0, 100) || "AU/48155/GI/696/76";
+  const giNumber = str(formData, "giNumber").slice(0, 50) || "GI-696";
+  const authorizedUserName =
+    str(formData, "authorizedUserName").slice(0, 200) || "AVRELLE AGRO PRODUCTS PRIVATE LIMITED";
+  const certificateFileUrl = str(formData, "certificateFileUrl") || null;
+  const announcementHeadline =
+    str(formData, "announcementHeadline").slice(0, 200) ||
+    "An Officially Recognized Authorized User of Mithila Makhana";
+  const announcementText =
+    str(formData, "announcementText").slice(0, 1000) ||
+    "AVRELLE AGRO PRODUCTS PRIVATE LIMITED is proud to be recognized as an Authorized User of Mithila Makhana (GI-696), celebrating the authentic heritage, geographical identity, and agricultural legacy of Bihar.";
+
+  await saveSetting(SETTING_KEYS.giRecognition, {
+    enabled: bool(formData, "enabled"),
+    certNumber,
+    giNumber,
+    authorizedUserName,
+    certificateFileUrl,
+    badgeVisible: bool(formData, "badgeVisible"),
+    heroAnnouncementEnabled: bool(formData, "heroAnnouncementEnabled"),
+    productDisplayEnabled: bool(formData, "productDisplayEnabled"),
+    announcementHeadline,
+    announcementText,
+  });
+
+  refreshSite();
+  revalidatePath("/admin/settings");
+  revalidatePath("/mithila-makhana-gi-recognition");
+  return { ok: true };
+}
+
+/* ----------------------------------------------------- company history */
+
+export async function saveCompanyHistoryAction(
+  _prev: SettingsResult,
+  formData: FormData,
+): Promise<SettingsResult> {
+  await requireManager();
+  const beginningHeadline = str(formData, "beginningHeadline").slice(0, 150) || "Beginning";
+  const beginningText = str(formData, "beginningText").slice(0, 3000);
+  const foundationHeadline = str(formData, "foundationHeadline").slice(0, 150) || "Our Foundation";
+  const foundationText = str(formData, "foundationText").slice(0, 3000);
+  const growthHeadline = str(formData, "growthHeadline").slice(0, 150) || "Our Growth and Capabilities";
+  const growthText = str(formData, "growthText").slice(0, 3000);
+  const todayHeadline = str(formData, "todayHeadline").slice(0, 150) || "Where We Stand Today";
+  const todayText = str(formData, "todayText").slice(0, 3000);
+
+  if (beginningText.length < 10) return { error: "Beginning text cannot be empty." };
+  if (foundationText.length < 10) return { error: "Foundation text cannot be empty." };
+  if (growthText.length < 10) return { error: "Growth text cannot be empty." };
+  if (todayText.length < 10) return { error: "Where We Stand Today text cannot be empty." };
+
+  await saveSetting(SETTING_KEYS.companyHistory, {
+    beginningHeadline,
+    beginningText,
+    foundationHeadline,
+    foundationText,
+    growthHeadline,
+    growthText,
+    todayHeadline,
+    todayText,
+  });
+
+  refreshSite();
+  revalidatePath("/admin/settings");
+  revalidatePath("/about");
+  return { ok: true };
+}
+
 /* ----------------------------------------------------------------- shipping */
 
 export async function saveShippingAction(

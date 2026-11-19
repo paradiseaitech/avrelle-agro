@@ -1,24 +1,30 @@
 import Link from "next/link";
 import { getSettings } from "@/lib/db-data";
 import { SocialMediaLinks } from "@/components/site/social-links";
+import { ShieldCheck, Globe, Building2, MapPin, Award } from "lucide-react";
+import { GIBadge } from "@/components/site/gi-badge";
 
-const shopLinks = [
-  { href: "/shop", label: "Shop All Makhana" },
-  { href: "/#pack-size-heading", label: "100g Pocket Pack" },
-  { href: "/#pack-size-heading", label: "200g Daily Pack" },
-  { href: "/#pack-size-heading", label: "400g Family Pack" },
-  { href: "/#pack-size-heading", label: "500g Pantry Pack" },
-  { href: "/#pack-size-heading", label: "1 kg Mega Pack" },
+const corporateLinks = [
+  { href: "/about", label: "About AVRELLE AGRO" },
+  { href: "/mithila-makhana-gi-recognition", label: "Mithila Makhana GI Recognition" },
+  { href: "/origin", label: "Our Origin & Heritage" },
+  { href: "/farmer-network", label: "Farmer Network & Sourcing" },
+  { href: "/manufacturing", label: "Manufacturing & Facility" },
+  { href: "/quality-assurance", label: "Quality Assurance & Hygiene" },
+  { href: "/certifications", label: "Certifications & Compliance" },
 ];
 
-const infoLinks = [
-  { href: "/about", label: "About Us" },
-  { href: "/bulk-orders", label: "Bulk Rate Card & Enquiry" },
-  { href: "/faqs", label: "FAQs" },
-  { href: "/contact", label: "Contact Us" },
+const productTradeLinks = [
+  { href: "/products", label: "Product Portfolio (5 Categories)" },
+  { href: "/grades", label: "Makhana Grading Standards" },
+  { href: "/bulk-supply", label: "B2B Bulk Supply (Domestic)" },
+  { href: "/exports", label: "International Exports & Logistics" },
+  { href: "/shop", label: "Shop Retail Packs (100g – 1 kg)" },
 ];
 
 const policyLinks = [
+  { href: "/contact", label: "Contact Corporate Desk" },
+  { href: "/faqs", label: "Frequently Asked Questions" },
   { href: "/shipping-policy", label: "Shipping Policy" },
   { href: "/returns-policy", label: "Cancellation & Returns" },
   { href: "/privacy", label: "Privacy Policy" },
@@ -30,38 +36,65 @@ export async function SiteFooter() {
   const waNumber = business.whatsapp.replace(/\D/g, "");
 
   return (
-    <footer className="mt-auto bg-forest-900 text-ivory-100">
+    <footer className="mt-auto bg-forest-950 text-ivory-100 border-t border-gold-500/20">
+      {/* Top Corporate Strip */}
+      <div className="border-b border-ivory-100/10 bg-forest-900/60 py-6">
+        <div className="section-shell flex flex-wrap items-center justify-between gap-4 text-[12.5px] text-ivory-100/80">
+          <div className="flex items-center gap-2">
+            <MapPin className="h-4 w-4 text-gold-400 shrink-0" />
+            <span>Processing &amp; Sourcing Hub: <strong>Purnea, Bihar, India</strong></span>
+          </div>
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-4 w-4 text-gold-400 shrink-0" />
+            <span>Food Safety, Multi-Stage Grading &amp; Hygienic Packaging</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Globe className="h-4 w-4 text-gold-400 shrink-0" />
+            <span>Domestic Bulk Supply &amp; Global Export Ready</span>
+          </div>
+        </div>
+      </div>
+
       <div className="section-shell grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
-        {/* Col 1: Brand, Address & Social Icons */}
+        {/* Col 1: Brand & Corporate Address */}
         <div>
           <div className="flex items-center gap-3">
-            <img src="/brand/logo-mark.svg" alt="" width={40} height={40} className="h-10 w-10" aria-hidden="true" />
+            <img src="/brand/logo-mark.svg" alt="" width={42} height={42} className="h-10 w-10" aria-hidden="true" />
             <div>
-              <p className="font-serif text-lg tracking-[0.22em] text-ivory-50">AVRELLE</p>
-              <p className="mt-0.5 text-[8.5px] font-semibold uppercase tracking-luxe text-gold-400">
-                Agro Pvt Ltd
+              <p className="font-serif text-lg tracking-[0.16em] text-ivory-50 font-bold">AVRELLE AGRO</p>
+              <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-luxe text-gold-400">
+                Pvt Ltd · Mithila Makhana
               </p>
             </div>
           </div>
-          <p className="mt-4 font-serif text-sm italic text-gold-300">{business.tagline}</p>
-          <address className="mt-4 space-y-1 text-[13px] not-italic text-ivory-100/80">
-            <p>{business.addressLine}, {business.state}, India</p>
+          <p className="mt-4 font-serif text-[14px] italic text-gold-300">
+            &ldquo;Bringing the Finest of Mithila Makhana to the World.&rdquo;
+          </p>
+
+          <div className="mt-4">
+            <GIBadge variant="subtle" />
+          </div>
+
+          <address className="mt-4 space-y-1.5 text-[13px] not-italic text-ivory-100/80 leading-relaxed">
+            <p className="font-medium text-ivory-50">{business.displayName}</p>
+            <p>{business.addressLine}, {business.city}, {business.state}, India</p>
             <p>
-              <a href={`tel:${business.phone.replace(/\s/g, "")}`} className="hover:text-gold-300">
+              Corporate Inquiries:{" "}
+              <a href={`tel:${business.phone.replace(/\s/g, "")}`} className="hover:text-gold-300 text-gold-400 font-medium">
                 {business.phone}
               </a>
             </p>
             <p>
-              <a href={`mailto:${business.email}`} className="hover:text-gold-300">
+              Email:{" "}
+              <a href={`mailto:${business.email}`} className="hover:text-gold-300 text-ivory-100 underline underline-offset-2">
                 {business.email}
               </a>
             </p>
           </address>
           {business.showGst && business.gstNumber && (
-            <p className="mt-3 text-[12px] text-ivory-100/60">GSTIN: {business.gstNumber}</p>
+            <p className="mt-2 text-[11.5px] text-ivory-100/60 font-mono">GSTIN: {business.gstNumber}</p>
           )}
 
-          {/* Social media placeholder icons */}
           <div className="mt-5 border-t border-ivory-100/10 pt-4">
             <p className="text-[11px] font-semibold uppercase tracking-wider text-gold-400 mb-2.5">
               Connect With Us
@@ -70,13 +103,14 @@ export async function SiteFooter() {
           </div>
         </div>
 
-        {/* Col 2: Retail Pack Sizes */}
-        <nav aria-label="Shop">
-          <h2 className="text-eyebrow !text-gold-400">Retail Pack Sizes</h2>
-          <ul className="mt-4 space-y-2.5 text-[13.5px] text-ivory-100/85">
-            {shopLinks.map((l) => (
-              <li key={l.href + l.label}>
-                <Link href={l.href} className="transition-colors hover:text-gold-300">
+        {/* Col 2: Corporate & Operations */}
+        <nav aria-label="Corporate">
+          <h2 className="text-eyebrow !text-gold-400">Company &amp; Quality</h2>
+          <ul className="mt-4 space-y-2.5 text-[13px] text-ivory-100/85">
+            {corporateLinks.map((l) => (
+              <li key={l.href}>
+                <Link href={l.href} className="transition-colors hover:text-gold-300 flex items-center gap-1.5">
+                  <span className="h-1 w-1 rounded-full bg-gold-400/60" />
                   {l.label}
                 </Link>
               </li>
@@ -84,20 +118,14 @@ export async function SiteFooter() {
           </ul>
         </nav>
 
-        {/* Col 3: Company & Policies */}
-        <nav aria-label="Information">
-          <h2 className="text-eyebrow !text-gold-400">Information</h2>
-          <ul className="mt-4 space-y-2.5 text-[13.5px] text-ivory-100/85">
-            {infoLinks.map((l) => (
+        {/* Col 3: Products & Trade */}
+        <nav aria-label="Products & B2B">
+          <h2 className="text-eyebrow !text-gold-400">Products &amp; Trade</h2>
+          <ul className="mt-4 space-y-2.5 text-[13px] text-ivory-100/85">
+            {productTradeLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="transition-colors hover:text-gold-300">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-            {policyLinks.map((l) => (
-              <li key={l.href}>
-                <Link href={l.href} className="transition-colors hover:text-gold-300">
+                <Link href={l.href} className="transition-colors hover:text-gold-300 flex items-center gap-1.5">
+                  <span className="h-1 w-1 rounded-full bg-gold-400/60" />
                   {l.label}
                 </Link>
               </li>
@@ -105,40 +133,45 @@ export async function SiteFooter() {
           </ul>
         </nav>
 
-        {/* Col 4: Bulk Supply & Rate Card */}
+        {/* Col 4: Commercial Portals & Support */}
         <div>
-          <h2 className="text-eyebrow !text-gold-400">Bulk &amp; Wholesale</h2>
-          <p className="mt-4 text-[13.5px] leading-relaxed text-ivory-100/85">
-            Official 8-tier wholesale supply direct from Purnea, Bihar (Ref: AVA/QTN/2026/038).
-            Standard 8 kg White PP bags with 100μ liner starting at ₹350/kg.
+          <h2 className="text-eyebrow !text-gold-400">Trade Enquiries</h2>
+          <p className="mt-4 text-[13px] leading-relaxed text-ivory-100/85">
+            Direct agro-processing supply from Purnea, Bihar. Ex-factory quotations, 8 kg White PP bags with 100μ liner, custom master packaging, and export container freight.
           </p>
-          <div className="mt-5 flex flex-col gap-3">
-            <Link href="/bulk-orders" className="btn-gold btn-sm w-fit">
-              View Bulk Rate Card
+          <div className="mt-5 flex flex-col gap-2.5">
+            <Link href="/bulk-supply" className="btn-gold btn-sm w-full text-center">
+              Request Wholesale Quote
+            </Link>
+            <Link href="/exports" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 btn-sm w-full text-center">
+              International Export Desk
             </Link>
             <a
-              href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hello AVRELLE AGRO, I would like to enquire about bulk makhana quotation.")}`}
+              href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hello AVRELLE AGRO, I am contacting you for corporate makhana supply enquiry.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline-gold btn-sm w-fit"
+              className="text-center text-[12px] font-medium text-gold-300 hover:underline pt-1"
             >
-              WhatsApp Enquiry
+              Direct WhatsApp Support →
             </a>
           </div>
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-ivory-100/10">
-        <div className="section-shell flex flex-col items-center justify-between gap-3 py-5 text-[12px] text-ivory-100/60 sm:flex-row">
+      <div className="border-t border-ivory-100/10 bg-forest-950 py-5">
+        <div className="section-shell flex flex-col items-center justify-between gap-3 text-[12px] text-ivory-100/60 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} AVRELLE AGRO PVT LTD. All rights reserved.
+            © {new Date().getFullYear()} AVRELLE AGRO PRODUCTS PRIVATE LIMITED. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
-            <span className="hidden sm:inline text-gold-400/80">Socials:</span>
-            <SocialMediaLinks buttonSize="h-7 w-7" iconSize="h-3.5 w-3.5" />
+          <div className="flex flex-wrap items-center gap-4 text-[11.5px]">
+            {policyLinks.slice(2).map((l) => (
+              <Link key={l.href} href={l.href} className="hover:text-gold-300">
+                {l.label}
+              </Link>
+            ))}
           </div>
-          <p>Makhana (Fox Nuts) · Purnea, Bihar, India</p>
+          <p>Rooted in Mithila · Purnia, Bihar, India</p>
         </div>
       </div>
     </footer>

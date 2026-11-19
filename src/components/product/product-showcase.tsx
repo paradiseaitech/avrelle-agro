@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { Award, ShieldCheck } from "lucide-react";
 import type { ProductDetail } from "@/lib/db-data";
 import { formatINR } from "@/lib/utils";
 import { useCartContext } from "@/components/cart/cart-context";
@@ -46,6 +47,35 @@ export function ProductShowcase({ product, initialVariantId }: ProductShowcasePr
 
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+
+  // Eligible only for authentic raw / natural Mithila makhana (not flavoured or powder derivatives)
+  const isGIEligible = useMemo(() => {
+    const name = (product.name || "").toLowerCase();
+    const slug = (product.slug || "").toLowerCase();
+    const desc = (product.description || "").toLowerCase();
+    const nonEligible = [
+      "powder",
+      "flour",
+      "roasted flavour",
+      "flavoured",
+      "flavored",
+      "peri peri",
+      "pudina",
+      "mint",
+      "cheese",
+      "cream",
+      "barbeque",
+      "bbq",
+      "sweet",
+      "caramel",
+      "jaggery",
+      "chocolate",
+    ];
+    if (nonEligible.some((k) => name.includes(k) || slug.includes(k) || desc.includes(k))) {
+      return false;
+    }
+    return name.includes("makhana") || slug.includes("makhana");
+  }, [product.name, product.slug, product.description]);
 
   if (!selectedVariant) return null;
 
@@ -340,6 +370,32 @@ export function ProductShowcase({ product, initialVariantId }: ProductShowcasePr
           Subtotal: <span className="font-semibold text-forest-800">{formatINR(lineTotal)}</span>
           {" · "}Cash on Delivery available across India
         </p>
+
+        {/* Recognized GI Origin Panel (Eligible Raw Mithila Makhana Only) */}
+        {isGIEligible && (
+          <div className="mt-6 rounded-lg border border-gold-500/50 bg-gradient-to-r from-forest-950/5 via-gold-500/10 to-forest-950/5 p-4 text-forest-950">
+            <div className="flex items-start gap-3">
+              <Award className="h-5 w-5 text-gold-600 shrink-0 mt-0.5" aria-hidden="true" />
+              <div className="text-[12.5px] leading-relaxed">
+                <p className="font-bold uppercase tracking-wider text-[11px] text-forest-900">
+                  Recognized GI Origin
+                </p>
+                <p className="mt-0.5 text-ink-700">
+                  AVRELLE AGRO PRODUCTS PRIVATE LIMITED is an Authorized User of Mithila Makhana (GI-696).
+                </p>
+                <p className="mt-0.5 font-mono text-[11px] text-gold-800 font-semibold">
+                  Authorized User Certificate: AU/48155/GI/696/76
+                </p>
+                <Link
+                  href="/mithila-makhana-gi-recognition"
+                  className="mt-1.5 inline-block text-[11.5px] font-semibold text-forest-800 hover:text-gold-700 underline"
+                >
+                  Explore Mithila Makhana GI Recognition Details &rarr;
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Product Specifications */}
         <dl className="mt-8 divide-y divide-beige-200 border-y border-beige-200 text-[14px]">

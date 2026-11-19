@@ -21,18 +21,31 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "AVRELLE AGRO PVT LTD — Premium Makhana from Purnea, Bihar",
+    default: "AVRELLE AGRO | Authorized User of Mithila Makhana GI-696",
     template: "%s · AVRELLE AGRO",
   },
   description:
-    "Premium graded phool makhana (fox nuts) from Purnea, Bihar. Shop 3, 4, 5 and 6+ Suta grades for everyday enjoyment, or request a quotation for bulk supply.",
-  keywords: ["makhana", "fox nuts", "phool makhana", "bihar makhana", "suta grade", "bulk makhana"],
+    "Discover AVRELLE AGRO PRODUCTS PRIVATE LIMITED, an officially recognized Authorized User of Mithila Makhana (GI-696), based in Bihar, India. Explore our makhana products, heritage, processing, and bulk supply offerings.",
+  keywords: [
+    "Mithila Makhana",
+    "GI Authorized User Mithila Makhana",
+    "Makhana company in Bihar",
+    "Makhana supplier in Purnia",
+    "Fox nuts supplier India",
+    "Makhana wholesale",
+    "Mithila Makhana bulk supply",
+    "GI-696",
+    "AU/48155/GI/696/76",
+    "phool makhana",
+    "bihar makhana",
+    "suta grade",
+  ],
   openGraph: {
     type: "website",
-    siteName: "AVRELLE AGRO PVT LTD",
-    title: "AVRELLE AGRO PVT LTD — Premium Makhana from Purnea, Bihar",
+    siteName: "AVRELLE AGRO PRODUCTS PRIVATE LIMITED",
+    title: "AVRELLE AGRO | Authorized User of Mithila Makhana GI-696",
     description:
-      "Carefully graded fox nuts for everyday snacking, retail, and bulk supply. Quality. Consistency. Trust.",
+      "Officially recognized Authorized User of Mithila Makhana (GI-696). Carefully sourced, graded, and processed fox nuts from Purnia, Bihar.",
     url: siteUrl,
   },
 };
