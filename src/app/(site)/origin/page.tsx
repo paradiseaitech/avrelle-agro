@@ -97,7 +97,7 @@ export default function OriginPage() {
     <div className="bg-ivory-50 text-forest-950">
       {/* 1. Hero Banner: Bihar's Makhana-Growing Wetlands */}
       <section className="relative overflow-hidden bg-forest-950 py-16 sm:py-24 text-ivory-100 border-b border-gold-500/30">
-        <div className="pointer-events-none absolute inset-4 border border-gold-500/20 sm:inset-6" aria-hidden="true" />
+        <div className="pointer-events-none absolute hidden sm:block inset-6 border border-gold-500/20" aria-hidden="true" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-forest-800/40 via-forest-950/80 to-forest-950 pointer-events-none" />
         
         <div className="section-shell relative z-10">
@@ -136,14 +136,14 @@ export default function OriginPage() {
             </p>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#kosi-map" className="btn-gold flex items-center gap-2 text-[13px]">
+          <div className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center">
+            <a href="#kosi-map" className="btn-gold flex items-center justify-center gap-2 text-[13px] text-center">
               <span>Explore Sourcing Map</span> <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#fpc-network" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <a href="#fpc-network" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               Our FPC Network (7 Districts)
             </a>
-            <Link href="/mithila-makhana-gi-recognition" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/mithila-makhana-gi-recognition" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               GI Authorized User (GI-696)
             </Link>
           </div>
@@ -165,19 +165,19 @@ export default function OriginPage() {
 
           <div className="mt-12 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-center">
             {/* Illustrated Map Graphic Card */}
-            <div className="relative rounded-2xl border-2 border-gold-500/40 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950 p-6 sm:p-8 text-ivory-100 shadow-xl overflow-hidden">
+            <div className="relative rounded-2xl border-2 border-gold-500/40 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950 p-4 sm:p-8 text-ivory-100 shadow-xl overflow-hidden">
               <div className="flex items-center justify-between border-b border-gold-500/25 pb-4 mb-6">
                 <div>
                   <span className="text-[10px] uppercase font-mono tracking-widest text-gold-400">Bihar Makhana Heartland</span>
-                  <h3 className="font-serif text-[20px] font-bold text-ivory-50">Kosi-Mithila Agro Map</h3>
+                  <h3 className="font-serif text-[18px] sm:text-[20px] font-bold text-ivory-50">Kosi-Mithila Agro Map</h3>
                 </div>
-                <span className="rounded bg-gold-500/20 px-2.5 py-1 text-[11px] font-mono text-gold-300">
+                <span className="rounded bg-gold-500/20 px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-[11px] font-mono text-gold-300">
                   AU/48155/GI/696/76
                 </span>
               </div>
 
               {/* Graphical Regional Representation */}
-              <div className="relative rounded-xl border border-gold-500/20 bg-forest-950/80 p-6">
+              <div className="relative rounded-xl border border-gold-500/20 bg-forest-950/80 p-3.5 sm:p-6">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                   {/* Kishanganj */}
                   <div className="rounded-lg border border-gold-500/30 bg-forest-900/60 p-4 transition-all hover:bg-forest-900">
@@ -332,18 +332,18 @@ export default function OriginPage() {
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/farmer-network" className="btn-gold text-[13px]">
+              <div className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center">
+                <Link href="/farmer-network" className="btn-gold text-[13px] text-center">
                   Explore Farmer Network Details
                 </Link>
-                <Link href="/quality-assurance" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+                <Link href="/quality-assurance" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
                   View Quality Assurance Protocols
                 </Link>
               </div>
             </div>
 
             {/* Visual Callout Card */}
-            <div className="rounded-2xl border border-gold-500/30 bg-forest-900/70 p-6 sm:p-8 backdrop-blur-sm shadow-xl">
+            <div className="rounded-2xl border border-gold-500/30 bg-forest-900/70 p-4 sm:p-8 backdrop-blur-sm shadow-xl">
               <span className="text-[10px] font-mono uppercase tracking-widest text-gold-400">Institutional Sourcing Model</span>
               <h3 className="mt-2 font-serif text-[22px] font-bold text-ivory-50">
                 The 7-District Bihar FPC Alliance
@@ -403,11 +403,11 @@ export default function OriginPage() {
           <p className="mt-3 text-[14.5px] text-ivory-200/80 leading-relaxed font-light">
             Whether for premium consumer retail packs or multi-ton B2B wholesale consignments, our direct origin sourcing guarantees unmatched purity.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/products" className="btn-gold text-[13px]">
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 items-stretch sm:items-center">
+            <Link href="/products" className="btn-gold text-[13px] text-center">
               Explore Complete Product Range
             </Link>
-            <Link href="/bulk-supply" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/bulk-supply" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               Request Bulk Quotation
             </Link>
           </div>

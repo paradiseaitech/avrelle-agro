@@ -14,26 +14,26 @@ export async function SiteHeader() {
     <header className="sticky top-0 z-40 w-full">
       <AnnouncementBar />
       <div className="border-b border-beige-300/80 bg-ivory-50/95 backdrop-blur-md supports-[backdrop-filter]:bg-ivory-50/90 transition-all">
-        <div className="section-shell flex h-[70px] sm:h-[74px] items-center justify-between gap-3 sm:gap-4">
+        <div className="section-shell flex h-[64px] sm:h-[74px] items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Mobile Nav Toggle & Brand Lockup */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
             <MobileNavToggle whatsapp={business.whatsapp} />
             <Link 
               href="/" 
-              className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none" 
+              className="flex items-center gap-2 sm:gap-3 group focus:outline-none min-w-0" 
               aria-label="AVRELLE AGRO PVT LTD home"
             >
               <img
                 src="/brand/logo-mark.svg"
                 alt=""
-                width={40}
-                height={40}
-                className="h-9 w-9 sm:h-10 sm:w-10 object-contain transition-transform group-hover:scale-105"
+                width={36}
+                height={36}
+                className="h-8 w-8 sm:h-10 sm:w-10 shrink-0 object-contain transition-transform group-hover:scale-105"
                 aria-hidden="true"
               />
-              <span className="flex flex-col leading-none">
-                <span className="font-serif text-[17px] sm:text-[19px] lg:text-[20px] font-bold tracking-[0.12em] text-forest-950">
+              <span className="flex flex-col leading-none min-w-0">
+                <span className="font-serif text-[15px] xs:text-[17px] sm:text-[19px] lg:text-[20px] font-bold tracking-[0.08em] xs:tracking-[0.12em] text-forest-950 truncate">
                   AVRELLE AGRO
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-gold-700 mt-1 hidden sm:inline-block">

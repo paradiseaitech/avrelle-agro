@@ -172,7 +172,7 @@ export function ProductShowcase({ product, initialVariantId }: ProductShowcasePr
             <p className="text-[11px] font-medium text-ink-500 uppercase tracking-wider mb-2">
               Packaging &amp; Grade Views:
             </p>
-            <div className="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-7 gap-2 sm:gap-2.5">
+            <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar sm:grid sm:grid-cols-5 lg:grid-cols-7 sm:gap-2.5">
               {product.images.map((img, i) => {
                 const isActive = activeImage === img;
                 const label = getThumbnailLabel(img, i);
@@ -181,7 +181,7 @@ export function ProductShowcase({ product, initialVariantId }: ProductShowcasePr
                     key={i}
                     type="button"
                     onClick={() => handleThumbnailClick(img)}
-                    className={`group relative flex flex-col items-center rounded-lg border p-1 text-center transition-all cursor-pointer ${
+                    className={`group relative shrink-0 w-[72px] sm:w-auto flex flex-col items-center rounded-lg border p-1 text-center transition-all cursor-pointer ${
                       isActive
                         ? "border-forest-900 bg-white ring-2 ring-gold-400 shadow-sm"
                         : "border-beige-200 bg-ivory-100 hover:border-gold-500 hover:bg-white"
@@ -197,7 +197,7 @@ export function ProductShowcase({ product, initialVariantId }: ProductShowcasePr
                       />
                     </div>
                     <span
-                      className={`mt-1 block truncate text-[9.5px] font-semibold ${
+                      className={`mt-1 block truncate w-full px-0.5 text-[9.5px] font-semibold ${
                         isActive ? "text-forest-900" : "text-ink-600"
                       }`}
                     >
@@ -298,8 +298,8 @@ export function ProductShowcase({ product, initialVariantId }: ProductShowcasePr
         </p>
 
         {/* Quantity + Add to Cart */}
-        <div className="mt-5 flex flex-wrap items-stretch gap-3">
-          <div className="flex items-center border border-beige-300 bg-white rounded">
+        <div className="mt-5 flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-3">
+          <div className="flex items-center justify-between sm:justify-start border border-beige-300 bg-white rounded">
             <button
               type="button"
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -356,7 +356,7 @@ export function ProductShowcase({ product, initialVariantId }: ProductShowcasePr
               setAdded(true);
               setTimeout(() => setAdded(false), 2400);
             }}
-            className="btn-primary flex-1 min-w-[200px] cursor-pointer"
+            className="btn-primary flex-1 min-w-[200px] !py-3 sm:!py-3.5 cursor-pointer text-center justify-center"
           >
             {added ? "Added to Cart ✓" : soldOut ? "Sold Out" : `Add ${selectedVariant.label} to Cart`}
           </button>

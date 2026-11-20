@@ -142,7 +142,7 @@ export default function ProductsPage() {
     <div className="bg-ivory-50 text-forest-950">
       {/* Header Banner */}
       <section className="relative overflow-hidden bg-forest-950 py-16 sm:py-24 text-ivory-100 border-b border-gold-500/30">
-        <div className="pointer-events-none absolute inset-4 border border-gold-500/20 sm:inset-6" aria-hidden="true" />
+        <div className="pointer-events-none absolute hidden sm:block inset-6 border border-gold-500/20" aria-hidden="true" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-forest-800/40 via-forest-950/80 to-forest-950 pointer-events-none" />
 
         <div className="section-shell relative z-10">
@@ -173,14 +173,14 @@ export default function ProductsPage() {
             Sourced from the finest <strong className="font-semibold text-gold-300">Guria seeds</strong> of the Kosi belt and processed under strict quality controls in Purnea, <strong className="font-semibold text-ivory-50">Avrelle Agro</strong> offers a complete portfolio of makhana tailored for retail consumers, bulk buyers, and global export markets.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/shop" className="btn-gold flex items-center gap-2 text-[13px]">
+          <div className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center">
+            <Link href="/shop" className="btn-gold flex items-center justify-center gap-2 text-[13px] text-center">
               <ShoppingBag className="h-4 w-4" /> <span>Shop Retail Packs</span>
             </Link>
-            <Link href="/bulk-supply" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/bulk-supply" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               <Building2 className="h-4 w-4" /> <span>B2B Wholesale Inquiries</span>
             </Link>
-            <Link href="/grades" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/grades" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               <span>Grade Standards (Suta Scale)</span>
             </Link>
           </div>
@@ -192,7 +192,7 @@ export default function ProductsPage() {
         <div className="section-shell space-y-20">
 
           {/* Category 1: Raw Makhana */}
-          <div id="raw-makhana" className="rounded-2xl border border-beige-300 bg-white p-6 sm:p-10 shadow-sm transition-shadow hover:shadow-md">
+          <div id="raw-makhana" className="rounded-2xl border border-beige-300 bg-white p-4 sm:p-8 lg:p-10 shadow-sm transition-shadow hover:shadow-md">
             <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div>
                 <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gold-700">
@@ -229,11 +229,11 @@ export default function ProductsPage() {
                 </div>
 
                 {/* CTAs */}
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href="/shop" className="btn-primary text-[13px] flex items-center gap-1.5">
+                <div className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center">
+                  <Link href="/shop" className="btn-primary text-[13px] flex items-center justify-center gap-1.5 text-center">
                     <ShoppingBag className="h-4 w-4" /> Buy Retail Packs (100g – 1 kg)
                   </Link>
-                  <Link href="/bulk-supply" className="btn-outline text-[13px] flex items-center gap-1.5">
+                  <Link href="/bulk-supply" className="btn-outline text-[13px] flex items-center justify-center gap-1.5 text-center">
                     <Building2 className="h-4 w-4" /> Bulk 8kg PP Bag Enquiry
                   </Link>
                 </div>
@@ -255,7 +255,7 @@ export default function ProductsPage() {
           </div>
 
           {/* Category 2: Graded Makhana */}
-          <div id="graded-makhana" className="rounded-2xl border-2 border-gold-500/40 bg-gradient-to-br from-ivory-50 via-white to-ivory-50 p-6 sm:p-10 shadow-sm transition-shadow hover:shadow-md">
+          <div id="graded-makhana" className="rounded-2xl border-2 border-gold-500/40 bg-gradient-to-br from-ivory-50 via-white to-ivory-50 p-4 sm:p-8 lg:p-10 shadow-sm transition-shadow hover:shadow-md">
             <div>
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gold-700">
                 <span className="rounded bg-gold-500/20 px-2 py-0.5 border border-gold-500/30">Category 02</span>
@@ -295,11 +295,11 @@ export default function ProductsPage() {
               </div>
 
               {/* Scale Guide Banner */}
-              <div className="mt-8 rounded-xl border border-beige-300 bg-white p-5 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="mt-8 rounded-xl border border-beige-300 bg-white p-4 sm:p-5 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4">
                 <div className="flex items-center gap-3">
                   <Scale className="h-6 w-6 text-gold-600 shrink-0" />
                   <div>
-                    <h5 className="font-serif text-[16px] font-bold text-forest-950">
+                    <h5 className="font-serif text-[15px] sm:text-[16px] font-bold text-forest-950">
                       Photographic Scale Calibration Reference
                     </h5>
                     <p className="text-[12px] text-ink-500">
@@ -307,17 +307,17 @@ export default function ProductsPage() {
                     </p>
                   </div>
                 </div>
-                <Link href="/grades" className="btn-outline btn-sm shrink-0 whitespace-nowrap">
+                <Link href="/grades" className="btn-outline btn-sm shrink-0 whitespace-nowrap text-center">
                   Explore Grade Specifications &rarr;
                 </Link>
               </div>
 
               {/* CTAs */}
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/shop" className="btn-primary text-[13px] flex items-center gap-1.5">
+              <div className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center">
+                <Link href="/shop" className="btn-primary text-[13px] flex items-center justify-center gap-1.5 text-center">
                   <ShoppingBag className="h-4 w-4" /> Shop Graded Packs
                 </Link>
-                <Link href="/bulk-supply" className="btn-outline text-[13px] flex items-center gap-1.5">
+                <Link href="/bulk-supply" className="btn-outline text-[13px] flex items-center justify-center gap-1.5 text-center">
                   <Building2 className="h-4 w-4" /> Inquire for Bulk Graded Lots
                 </Link>
               </div>
@@ -325,7 +325,7 @@ export default function ProductsPage() {
           </div>
 
           {/* Category 3: Roasted Makhana */}
-          <div id="roasted-makhana" className="rounded-2xl border border-beige-300 bg-white p-6 sm:p-10 shadow-sm transition-shadow hover:shadow-md">
+          <div id="roasted-makhana" className="rounded-2xl border border-beige-300 bg-white p-4 sm:p-8 lg:p-10 shadow-sm transition-shadow hover:shadow-md">
             <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div>
                 <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gold-700">
@@ -362,11 +362,11 @@ export default function ProductsPage() {
                 </div>
 
                 {/* CTAs */}
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link href="/shop" className="btn-primary text-[13px] flex items-center gap-1.5">
+                <div className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center">
+                  <Link href="/shop" className="btn-primary text-[13px] flex items-center justify-center gap-1.5 text-center">
                     <ShoppingBag className="h-4 w-4" /> Browse Roasted Selection
                   </Link>
-                  <Link href="/bulk-supply" className="btn-outline text-[13px] flex items-center gap-1.5">
+                  <Link href="/bulk-supply" className="btn-outline text-[13px] flex items-center justify-center gap-1.5 text-center">
                     <Building2 className="h-4 w-4" /> Wholesale Roasted Enquiries
                   </Link>
                 </div>
@@ -388,7 +388,7 @@ export default function ProductsPage() {
           </div>
 
           {/* Category 4: Flavoured Makhana */}
-          <div id="flavoured-makhana" className="rounded-2xl border border-beige-300 bg-white p-6 sm:p-10 shadow-sm transition-shadow hover:shadow-md">
+          <div id="flavoured-makhana" className="rounded-2xl border border-beige-300 bg-white p-4 sm:p-8 lg:p-10 shadow-sm transition-shadow hover:shadow-md">
             <div>
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-gold-700">
                 <span className="rounded bg-gold-500/10 px-2 py-0.5 border border-gold-500/20">Category 04</span>
@@ -432,11 +432,11 @@ export default function ProductsPage() {
               </div>
 
               {/* CTAs */}
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/shop" className="btn-primary text-[13px] flex items-center gap-1.5">
+              <div className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center">
+                <Link href="/shop" className="btn-primary text-[13px] flex items-center justify-center gap-1.5 text-center">
                   <ShoppingBag className="h-4 w-4" /> View Store Offerings
                 </Link>
-                <Link href="/contact" className="btn-outline text-[13px] flex items-center gap-1.5">
+                <Link href="/contact" className="btn-outline text-[13px] flex items-center justify-center gap-1.5 text-center">
                   <Building2 className="h-4 w-4" /> Discuss Custom Seasoning Development
                 </Link>
               </div>
@@ -456,11 +456,11 @@ export default function ProductsPage() {
           <p className="mt-3 text-[14.5px] text-ivory-200/80 leading-relaxed font-light">
             Contact our Purnia corporate desk for ex-factory commodity rates, 8kg moisture-barrier packaging, or export freight dispatch.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/bulk-supply" className="btn-gold text-[13px]">
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 items-stretch sm:items-center">
+            <Link href="/bulk-supply" className="btn-gold text-[13px] text-center">
               Submit Wholesale Bulk RFQ
             </Link>
-            <Link href="/exports" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/exports" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               International Export Desk
             </Link>
           </div>

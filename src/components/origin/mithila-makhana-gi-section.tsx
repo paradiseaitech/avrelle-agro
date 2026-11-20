@@ -51,26 +51,26 @@ export function MithilaMakhanaGISection() {
         </div>
 
         {/* Regional Bihar & Mithila Geographic Map & District Explorer */}
-        <div className="mt-14 rounded-2xl border border-beige-300 bg-white p-6 sm:p-10 shadow-sm">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
+        <div className="mt-10 sm:mt-14 rounded-2xl border border-beige-300 bg-white p-4 sm:p-8 lg:p-10 shadow-sm">
+          <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
             {/* Interactive SVG Regional Map Graphic */}
-            <div className="relative rounded-xl border border-gold-500/20 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950 p-6 text-ivory-100 overflow-hidden shadow-inner">
+            <div className="relative rounded-xl border border-gold-500/20 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950 p-3.5 sm:p-6 text-ivory-100 overflow-hidden shadow-inner">
               <div className="absolute inset-0 botanical-grid opacity-20 pointer-events-none" />
               
               <div className="relative flex items-center justify-between border-b border-gold-500/20 pb-3 mb-4">
                 <div className="flex items-center gap-2">
                   <Compass className="h-4 w-4 text-gold-400" />
-                  <span className="font-serif text-[15px] font-bold text-ivory-50 tracking-wider">
+                  <span className="font-serif text-[14px] sm:text-[15px] font-bold text-ivory-50 tracking-wider">
                     North Bihar Makhana Wetland Basin
                   </span>
                 </div>
-                <span className="text-[10.5px] uppercase tracking-widest text-gold-400 font-mono">
+                <span className="text-[10px] sm:text-[10.5px] uppercase tracking-widest text-gold-400 font-mono">
                   GI Geographic Origin
                 </span>
               </div>
 
               {/* Styled Vector Canvas representing Bihar's North Wetland Corridor */}
-              <div className="relative w-full aspect-[16/10] bg-forest-900/60 rounded-lg border border-gold-500/15 p-4 flex flex-col justify-between overflow-hidden">
+              <div className="relative w-full aspect-[16/10] min-h-[220px] bg-forest-900/60 rounded-lg border border-gold-500/15 p-3 sm:p-4 flex flex-col justify-between overflow-hidden">
                 {/* River paths (decorative Ganga & Kosi river flows) */}
                 <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-25" viewBox="0 0 400 250">
                   <path d="M 0,180 Q 150,160 250,190 T 400,210" fill="none" stroke="#C5A059" strokeWidth="3" strokeDasharray="4 2" />
@@ -122,21 +122,21 @@ export function MithilaMakhanaGISection() {
 
             {/* Selected District Details Card */}
             <div className="space-y-4">
-              <div className="rounded-xl border border-beige-300 bg-ivory-50 p-6">
+              <div className="rounded-xl border border-beige-300 bg-ivory-50 p-4 sm:p-6">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-gold-800 bg-gold-100 px-2.5 py-1 rounded inline-block">
                   Selected Procurement Hub
                 </span>
-                <h3 className="mt-3 font-serif text-[24px] font-bold text-forest-900">
+                <h3 className="mt-3 font-serif text-[22px] sm:text-[24px] font-bold text-forest-900">
                   {selectedDistrict.name}
                 </h3>
-                <p className="mt-1 font-serif text-[14px] text-gold-900 font-semibold italic">
+                <p className="mt-1 font-serif text-[13.5px] sm:text-[14px] text-gold-900 font-semibold italic">
                   {selectedDistrict.role}
                 </p>
-                <p className="mt-3 text-[14px] leading-relaxed text-ink-700">
+                <p className="mt-2.5 sm:mt-3 text-[13.5px] sm:text-[14px] leading-relaxed text-ink-700">
                   {selectedDistrict.description}
                 </p>
 
-                <div className="mt-5 pt-4 border-t border-beige-200/80 flex items-center justify-between text-[12px] text-ink-500">
+                <div className="mt-4 sm:mt-5 pt-3 sm:pt-4 border-t border-beige-200/80 flex flex-col xs:flex-row xs:items-center justify-between gap-2 text-[12px] text-ink-500">
                   <span>Procurement Type: <strong>Freshwater Wetland Aggregation</strong></span>
                   <Link href="/farmer-network" className="text-forest-800 hover:text-gold-700 font-semibold flex items-center gap-1">
                     Farmer Network →
@@ -145,7 +145,7 @@ export function MithilaMakhanaGISection() {
               </div>
 
               {/* Terroir Quality Highlights */}
-              <div className="rounded-xl border border-beige-200 bg-white p-5 space-y-2 text-[13px] text-ink-700">
+              <div className="rounded-xl border border-beige-200 bg-white p-4 sm:p-5 space-y-2 text-[13px] text-ink-700">
                 <h4 className="font-serif text-[15px] font-bold text-forest-900">
                   Terroir-Driven Nut Characteristics:
                 </h4>
@@ -165,21 +165,21 @@ export function MithilaMakhanaGISection() {
         </div>
 
         {/* 3 Comprehensive In-Depth Pillars */}
-        <div className="mt-14 grid gap-8 lg:grid-cols-3">
+        <div className="mt-10 sm:mt-14 grid gap-6 sm:gap-8 lg:grid-cols-3">
           {MITHILA_GI_CONTENT.pillars.map((pillar) => (
             <div 
               key={pillar.title} 
-              className="rounded-2xl border border-beige-300 bg-white p-7 shadow-sm flex flex-col justify-between transition-all hover:border-gold-500/50 hover:shadow-md"
+              className="rounded-2xl border border-beige-300 bg-white p-5 sm:p-7 shadow-sm flex flex-col justify-between transition-all hover:border-gold-500/50 hover:shadow-md"
             >
               <div>
-                <h3 className="font-serif text-[20px] font-bold text-forest-900">
+                <h3 className="font-serif text-[18px] sm:text-[20px] font-bold text-forest-900">
                   {pillar.title}
                 </h3>
-                <p className="mt-1 text-[12.5px] font-semibold uppercase tracking-wider text-gold-800">
+                <p className="mt-1 text-[12px] sm:text-[12.5px] font-semibold uppercase tracking-wider text-gold-800">
                   {pillar.tagline}
                 </p>
                 <span className="ornament-line mt-3 block" aria-hidden="true" />
-                <ul className="mt-5 space-y-3 text-[13.5px] text-ink-700 leading-relaxed">
+                <ul className="mt-4 sm:mt-5 space-y-2.5 sm:space-y-3 text-[13px] sm:text-[13.5px] text-ink-700 leading-relaxed">
                   {pillar.content.map((point, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <span className="mt-1 h-1.5 w-1.5 rounded-full bg-gold-600 shrink-0" />
@@ -193,7 +193,7 @@ export function MithilaMakhanaGISection() {
         </div>
 
         {/* Preservation Callout */}
-        <div className="mt-12 rounded-2xl border border-gold-500/40 bg-gradient-to-r from-gold-50/80 via-ivory-50 to-gold-50/80 p-7 sm:p-9 shadow-sm text-center max-w-4xl mx-auto">
+        <div className="mt-10 sm:mt-12 rounded-2xl border border-gold-500/40 bg-gradient-to-r from-gold-50/80 via-ivory-50 to-gold-50/80 p-5 sm:p-8 lg:p-9 shadow-sm text-center max-w-4xl mx-auto">
           <Sparkles className="h-7 w-7 text-gold-700 mx-auto" />
           <h3 className="mt-3 font-serif text-[22px] font-bold text-forest-900 sm:text-[26px]">
             Preserving Authenticity for Future Generations

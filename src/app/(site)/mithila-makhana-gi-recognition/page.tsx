@@ -62,17 +62,17 @@ export default async function GIRecognitionPage() {
             <span className="font-mono font-medium text-gold-300">{certNumber}</span>.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <a
               href="#certificate-view"
-              className="inline-flex items-center gap-2 rounded bg-gold-500 px-6 py-3 text-[13px] font-semibold text-forest-950 shadow-md transition-all hover:bg-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400"
+              className="inline-flex items-center justify-center gap-2 rounded bg-gold-500 px-6 py-3 text-[13px] font-semibold text-forest-950 shadow-md transition-all hover:bg-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-400 text-center"
             >
               <FileText className="h-4 w-4" />
               <span>View Authorized User Certificate</span>
             </a>
             <Link
               href="/origin"
-              className="inline-flex items-center gap-2 rounded border border-ivory-100/30 bg-forest-900/50 px-6 py-3 text-[13px] font-semibold text-ivory-100 transition-all hover:bg-forest-900 focus:outline-none"
+              className="inline-flex items-center justify-center gap-2 rounded border border-ivory-100/30 bg-forest-900/50 px-6 py-3 text-[13px] font-semibold text-ivory-100 transition-all hover:bg-forest-900 focus:outline-none text-center"
             >
               <span>Explore Mithila Origin</span>
               <ArrowRight className="h-4 w-4 text-gold-400" />
@@ -265,7 +265,7 @@ export default async function GIRecognitionPage() {
 
           <div className="mt-12 mx-auto max-w-3xl">
             {/* Elegant Certificate Showcase Card */}
-            <div className="relative rounded-xl border-2 border-gold-500/50 bg-white p-6 sm:p-10 shadow-xl">
+            <div className="relative rounded-xl border-2 border-gold-500/50 bg-white p-4 sm:p-8 lg:p-10 shadow-xl">
               {/* Gold Filigree Corner Accents */}
               <div className="absolute top-3 left-3 h-4 w-4 border-t-2 border-l-2 border-gold-600" />
               <div className="absolute top-3 right-3 h-4 w-4 border-t-2 border-r-2 border-gold-600" />
@@ -427,11 +427,11 @@ export default async function GIRecognitionPage() {
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href="/bulk-supply" className="btn-primary">
+              <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+                <Link href="/bulk-supply" className="btn-primary text-center">
                   Bulk Supply Enquiries
                 </Link>
-                <Link href="/shop" className="btn-outline">
+                <Link href="/shop" className="btn-outline text-center">
                   Browse Retail Packs
                 </Link>
               </div>

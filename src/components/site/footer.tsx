@@ -38,8 +38,8 @@ export async function SiteFooter() {
   return (
     <footer className="mt-auto bg-forest-950 text-ivory-100 border-t border-gold-500/20">
       {/* Top Corporate Strip */}
-      <div className="border-b border-ivory-100/10 bg-forest-900/60 py-6">
-        <div className="section-shell flex flex-wrap items-center justify-between gap-4 text-[12.5px] text-ivory-100/80">
+      <div className="border-b border-ivory-100/10 bg-forest-900/60 py-4 sm:py-6">
+        <div className="section-shell flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-between gap-2.5 sm:gap-4 text-[12px] sm:text-[12.5px] text-ivory-100/80">
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 text-gold-400 shrink-0" />
             <span>Processing &amp; Sourcing Hub: <strong>Purnea, Bihar, India</strong></span>
@@ -55,7 +55,7 @@ export async function SiteFooter() {
         </div>
       </div>
 
-      <div className="section-shell grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
+      <div className="section-shell grid gap-8 sm:gap-10 py-10 sm:py-14 md:grid-cols-2 lg:grid-cols-4">
         {/* Col 1: Brand & Corporate Address */}
         <div>
           <div className="flex items-center gap-3">
@@ -160,18 +160,18 @@ export async function SiteFooter() {
 
       {/* Bottom Bar */}
       <div className="border-t border-ivory-100/10 bg-forest-950 py-5">
-        <div className="section-shell flex flex-col items-center justify-between gap-3 text-[12px] text-ivory-100/60 sm:flex-row">
+        <div className="section-shell flex flex-col items-center justify-between gap-3 text-[11.5px] sm:text-[12px] text-ivory-100/60 text-center sm:text-left sm:flex-row">
           <p>
             © {new Date().getFullYear()} AVRELLE AGRO PRODUCTS PRIVATE LIMITED. All rights reserved.
           </p>
-          <div className="flex flex-wrap items-center gap-4 text-[11.5px]">
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-[11px] sm:text-[11.5px]">
             {policyLinks.slice(2).map((l) => (
               <Link key={l.href} href={l.href} className="hover:text-gold-300">
                 {l.label}
               </Link>
             ))}
           </div>
-          <p>Rooted in Mithila · Purnia, Bihar, India</p>
+          <p className="text-[11px] sm:text-[12px]">Rooted in Mithila · Purnia, Bihar, India</p>
         </div>
       </div>
     </footer>

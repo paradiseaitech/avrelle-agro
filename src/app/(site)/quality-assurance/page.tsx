@@ -115,7 +115,7 @@ export default function QualityAssurancePage() {
     <div className="bg-ivory-50 text-forest-950">
       {/* Header Banner */}
       <section className="relative overflow-hidden bg-forest-950 py-16 sm:py-24 text-ivory-100 border-b border-gold-500/30">
-        <div className="pointer-events-none absolute inset-4 border border-gold-500/20 sm:inset-6" aria-hidden="true" />
+        <div className="pointer-events-none absolute hidden sm:block inset-6 border border-gold-500/20" aria-hidden="true" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-forest-800/40 via-forest-950/80 to-forest-950 pointer-events-none" />
 
         <div className="section-shell relative z-10">
@@ -151,14 +151,14 @@ export default function QualityAssurancePage() {
             </p>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#qa-stages" className="btn-gold flex items-center gap-2 text-[13px]">
+          <div className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-stretch sm:items-center">
+            <a href="#qa-stages" className="btn-gold flex items-center justify-center gap-2 text-[13px] text-center">
               <span>Explore 5 QA Stages</span> <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#quality-highlights" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <a href="#quality-highlights" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               6 Core Highlights
             </a>
-            <Link href="/products" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/products" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               View Graded Products
             </Link>
           </div>
@@ -182,7 +182,7 @@ export default function QualityAssurancePage() {
             {QA_STAGES.map((s, idx) => (
               <div
                 key={s.stage}
-                className="relative rounded-2xl border border-beige-300 bg-white p-6 sm:p-8 shadow-sm transition-all hover:border-gold-500 hover:shadow-md"
+                className="relative rounded-2xl border border-beige-300 bg-white p-4 sm:p-8 shadow-sm transition-all hover:border-gold-500 hover:shadow-md"
               >
                 <div className="grid gap-6 lg:grid-cols-[1fr_2fr_1.2fr] lg:items-center">
                   
@@ -227,19 +227,19 @@ export default function QualityAssurancePage() {
           </div>
 
           {/* Closing Statement Callout Banner */}
-          <div className="mt-14 rounded-2xl border-2 border-gold-500/50 bg-gradient-to-r from-forest-950 via-forest-900 to-forest-950 p-8 sm:p-10 text-ivory-100 text-center shadow-xl">
+          <div className="mt-14 rounded-2xl border-2 border-gold-500/50 bg-gradient-to-r from-forest-950 via-forest-900 to-forest-950 p-5 sm:p-8 lg:p-10 text-ivory-100 text-center shadow-xl">
             <Award className="h-8 w-8 text-gold-400 mx-auto" />
             <h3 className="mt-3 font-serif text-[22px] sm:text-[28px] font-bold text-ivory-50">
               Export-Grade Purity &amp; Food Safety Standards
             </h3>
-            <p className="mt-3 text-[15.5px] sm:text-[17px] leading-relaxed text-gold-200 max-w-3xl mx-auto font-light">
+            <p className="mt-3 text-[14.5px] sm:text-[17px] leading-relaxed text-gold-200 max-w-3xl mx-auto font-light">
               &ldquo;The result is 100% natural, clean, and export-grade makhana that meets stringent domestic and international food safety standards.&rdquo;
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Link href="/products" className="btn-gold text-[13px]">
+            <div className="mt-6 flex flex-col sm:flex-row justify-center gap-3 items-stretch sm:items-center">
+              <Link href="/products" className="btn-gold text-[13px] text-center">
                 Explore Export &amp; Retail Grades
               </Link>
-              <Link href="/bulk-supply" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+              <Link href="/bulk-supply" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
                 Request Technical Batch Specifications
               </Link>
             </div>
@@ -284,7 +284,7 @@ export default function QualityAssurancePage() {
       {/* Visual Size & Grade Assurance Showcase */}
       <section className="py-16 sm:py-20 border-b border-beige-200">
         <div className="section-shell">
-          <div className="rounded-2xl border border-beige-300 bg-white p-6 sm:p-10 shadow-sm max-w-4xl mx-auto">
+          <div className="rounded-2xl border border-beige-300 bg-white p-4 sm:p-8 lg:p-10 shadow-sm max-w-4xl mx-auto">
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-beige-200 pb-4 mb-6">
               <div>
                 <span className="text-[10px] uppercase font-bold tracking-wider text-gold-700">Size Calibrations</span>
@@ -341,11 +341,11 @@ export default function QualityAssurancePage() {
           <p className="mt-3 text-[14.5px] text-ivory-200/80 leading-relaxed font-light">
             Discuss customized grade specifications, moisture requirements, and private-label packaging with our quality team in Purnea.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link href="/bulk-supply" className="btn-gold text-[13px]">
+          <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 items-stretch sm:items-center">
+            <Link href="/bulk-supply" className="btn-gold text-[13px] text-center">
               Request Wholesale Quotation
             </Link>
-            <Link href="/contact" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/contact" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px] text-center">
               Contact Corporate Desk
             </Link>
           </div>

@@ -32,9 +32,9 @@ export function ShopControls({
   }
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 border-b border-beige-200 pb-5">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 border-b border-beige-200 pb-4 sm:pb-5">
       <div
-        className="flex flex-wrap items-center gap-2"
+        className="flex flex-wrap items-center gap-1.5 sm:gap-2"
         role="group"
         aria-label="Filter by pack size"
       >
@@ -45,7 +45,7 @@ export function ShopControls({
               key={f.label}
               type="button"
               onClick={() => go({ size: f.value })}
-              className={`border px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-wider transition-colors cursor-pointer ${
+              className={`border px-2.5 py-1 sm:px-3.5 sm:py-1.5 text-[11px] sm:text-[12px] font-medium uppercase tracking-wider transition-colors cursor-pointer rounded-xs ${
                 active
                   ? "border-forest-800 bg-forest-800 text-ivory-100 shadow-xs"
                   : "border-beige-300 bg-white text-ink-700 hover:border-gold-500 hover:bg-gold-50/40"
@@ -58,15 +58,15 @@ export function ShopControls({
         })}
       </div>
 
-      <div className="flex items-center gap-2">
-        <label htmlFor="shop-sort" className="text-[12px] font-medium uppercase tracking-wider text-ink-600">
+      <div className="flex items-center justify-between sm:justify-start gap-2 w-full sm:w-auto">
+        <label htmlFor="shop-sort" className="text-[11.5px] sm:text-[12px] font-medium uppercase tracking-wider text-ink-600">
           Sort
         </label>
         <select
           id="shop-sort"
           value={sort}
           onChange={(e) => go({ sort: e.target.value })}
-          className="field !w-auto !py-1.5 text-[13px]"
+          className="field !w-auto !py-1 sm:!py-1.5 text-[12.5px] sm:text-[13px]"
         >
           <option value="featured">Featured</option>
           <option value="price-asc">Price: low to high</option>

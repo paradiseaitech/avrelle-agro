@@ -15,8 +15,11 @@ import {
   Globe, 
   Layers, 
   ArrowRight,
-  MessageCircle
+  MessageCircle,
+  User,
+  Phone
 } from "lucide-react";
+import { useCartContext } from "@/components/cart/cart-context";
 
 export interface NavItem {
   label: string;
@@ -287,11 +290,30 @@ export function HeaderSearch() {
   );
 }
 
+export const ALL_MOBILE_SECTIONS = [
+  { num: "01", label: "Home", href: "/", description: "Homepage & company overview" },
+  { num: "02", label: "About Us", href: "/about", description: "Corporate background & governance" },
+  { num: "03", label: "Our Origin", href: "/origin", badge: "Terroir", description: "Kosi belt & Purnia wetlands" },
+  { num: "04", label: "Our Products", href: "/products", badge: "Portfolio", description: "Raw, Graded, Roasted & Flavoured" },
+  { num: "05", label: "Manufacturing", href: "/manufacturing", description: "10-stage processing journey & facility" },
+  { num: "06", label: "Quality Assurance", href: "/quality-assurance", description: "5-stage hygiene & testing protocol" },
+  { num: "07", label: "Certifications", href: "/certifications", description: "FSSAI, GST, IEC & APEDA" },
+  { num: "08", label: "Farmer Network", href: "/farmer-network", description: "7-district FPC sourcing partnerships" },
+  { num: "09", label: "Bulk Supply", href: "/bulk-supply", badge: "Wholesale", description: "Commercial 8 kg PP bags & RFQ" },
+  { num: "10", label: "Exports", href: "/exports", badge: "Global", description: "International sea/air freight" },
+  { num: "11", label: "Contact Us", href: "/contact", description: "Purnia corporate desk & helpline" },
+  { num: "12", label: "Shop Retail Packs", href: "/shop", badge: "Store", description: "100g – 1 kg packs with COD" },
+  { num: "GI", label: "GI Recognition (GI-696)", href: "/mithila-makhana-gi-recognition", badge: "Official", description: "Authorized User Certificate AU/48155/GI/696/76" },
+  { num: "★", label: "Makhana Grades", href: "/grades", badge: "Suta Scale", description: "3 Suta to 6+ Jumbo Suta metrics" },
+];
+
 export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
   const [open, setOpen] = useState(false);
-  const [expandedGroup, setExpandedGroup] = useState<string | null>("Company");
+  const [searchQuery, setSearchQuery] = useState("");
   const panelRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const router = useRouter();
+  const { count: cartCount } = useCartContext();
 
   useEffect(() => {
     if (!open) return;
@@ -337,24 +359,24 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
           {/* Slide-out Panel */}
           <div
             ref={panelRef}
-            className="absolute right-0 top-0 flex h-full w-[88%] max-w-[360px] flex-col bg-ivory-50 shadow-2xl border-l border-beige-300 animate-in slide-in-from-right duration-300"
+            className="absolute right-0 top-0 flex h-[100dvh] max-h-[100dvh] w-[88%] max-w-[340px] xs:max-w-[360px] flex-col bg-ivory-50 shadow-2xl border-l border-beige-300 animate-in slide-in-from-right duration-300"
           >
             {/* Drawer Header */}
-            <div className="flex items-center justify-between border-b border-beige-200 px-5 py-4 bg-white/80 backdrop-blur-sm">
-              <div className="flex items-center gap-2.5">
+            <div className="flex items-center justify-between border-b border-beige-200 px-4 py-3.5 sm:px-5 sm:py-4 bg-white/80 backdrop-blur-sm shrink-0">
+              <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
                 <img
                   src="/brand/logo-mark.svg"
                   alt=""
                   width={34}
                   height={34}
-                  className="h-8 w-8 shrink-0"
+                  className="h-7 w-7 sm:h-8 sm:w-8 shrink-0"
                   aria-hidden="true"
                 />
-                <div className="flex flex-col">
-                  <span className="font-serif text-[17px] font-bold tracking-[0.14em] text-forest-950 leading-none">
+                <div className="flex flex-col min-w-0">
+                  <span className="font-serif text-[15px] sm:text-[17px] font-bold tracking-[0.12em] sm:tracking-[0.14em] text-forest-950 leading-none truncate">
                     AVRELLE AGRO
                   </span>
-                  <span className="text-[9.5px] uppercase tracking-[0.18em] text-gold-700 font-semibold mt-0.5">
+                  <span className="text-[9px] sm:text-[9.5px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-gold-700 font-semibold mt-0.5 truncate">
                     Mithila Makhana · Purnia
                   </span>
                 </div>
@@ -362,90 +384,137 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-beige-300 bg-white text-forest-900 hover:bg-beige-100 transition-colors shadow-xs"
+                className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-beige-300 bg-white text-forest-900 hover:bg-beige-100 transition-colors shadow-xs shrink-0 ml-2"
                 aria-label="Close menu"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            {/* Drawer Nav Body */}
-            <nav className="flex-1 overflow-y-auto px-5 py-4 space-y-1" aria-label="Mobile navigation">
-              {PRIMARY_NAV.map((entry) => {
-                if (entry.type === "link") {
-                  const active = pathname === entry.href;
-                  return (
-                    <div key={entry.href} className="border-b border-beige-200/60 last:border-0">
-                      <Link
-                        href={entry.href}
-                        onClick={() => setOpen(false)}
-                        className={`flex items-center justify-between py-3 px-1 font-serif text-[16px] transition-colors ${
-                          active
-                            ? "font-bold text-gold-800"
-                            : "text-forest-950 hover:text-gold-700"
-                        }`}
-                      >
-                        <span>{entry.label}</span>
-                        <ArrowRight className="h-3.5 w-3.5 text-gold-600" />
-                      </Link>
-                    </div>
-                  );
-                }
+            {/* Mobile Search Bar */}
+            <div className="border-b border-beige-200/80 bg-white/60 px-4 py-2.5 shrink-0">
+              <form
+                role="search"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const val = searchQuery.trim();
+                  setOpen(false);
+                  router.push(val ? `/shop?q=${encodeURIComponent(val)}` : "/shop");
+                }}
+                className="flex items-center"
+              >
+                <div className="flex w-full h-9 items-center rounded-lg border border-beige-300 bg-white px-2.5 focus-within:border-gold-500 shadow-xs">
+                  <Search className="h-3.5 w-3.5 text-ink-400 shrink-0 mr-2" />
+                  <input
+                    type="search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search makhana products…"
+                    className="w-full bg-transparent text-[12.5px] text-ink-900 placeholder:text-ink-400 focus:outline-none"
+                  />
+                </div>
+              </form>
+            </div>
 
-                const isExpanded = expandedGroup === entry.label;
+            {/* Navigation Header */}
+            <div className="flex items-center justify-between px-4 pt-2.5 pb-1 text-[10.5px] font-semibold uppercase tracking-wider text-ink-400 shrink-0">
+              <span>All 12 Corporate Sections</span>
+              <span className="font-mono text-gold-800 text-[10px]">Complete Index</span>
+            </div>
 
+            {/* Drawer Nav Body: 100% Direct, Scrollable, Complete List of All Sections */}
+            <nav className="flex-1 overflow-y-auto overscroll-contain px-3 py-1.5 space-y-1" aria-label="Mobile navigation">
+              {ALL_MOBILE_SECTIONS.map((section) => {
+                const active = pathname === section.href || (section.href !== "/" && pathname.startsWith(section.href));
                 return (
-                  <div key={entry.label} className="border-b border-beige-200/60 last:border-0 py-1">
-                    <button
-                      type="button"
-                      onClick={() => setExpandedGroup(isExpanded ? null : entry.label)}
-                      className="flex w-full items-center justify-between py-2.5 px-1 font-serif text-[16px] font-semibold text-forest-950 hover:text-gold-700 transition-colors"
-                      aria-expanded={isExpanded}
-                    >
-                      <span className={isExpanded ? "text-gold-800" : ""}>{entry.label}</span>
-                      <ChevronDown
-                        className={`h-4 w-4 text-forest-700 transition-transform duration-200 ${
-                          isExpanded ? "rotate-180 text-gold-700" : ""
-                        }`}
-                      />
-                    </button>
-
-                    {/* Sub-items with clean editorial left guideline */}
-                    {isExpanded && (
-                      <div className="pb-2 pt-1 pl-3.5 border-l-2 border-gold-500/40 ml-2 space-y-1.5 animate-in fade-in-0 duration-150">
-                        {entry.items.map((item) => (
-                          <Link
-                            key={item.href}
-                            href={item.href}
-                            onClick={() => setOpen(false)}
-                            className="block rounded-lg px-2.5 py-2 text-ink-800 hover:bg-beige-100/80 transition-colors"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="font-serif text-[14px] font-medium text-forest-950">
-                                {item.label}
-                              </span>
-                              {item.badge && (
-                                <span className="rounded-full bg-gold-100 border border-gold-500/20 px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider text-gold-800">
-                                  {item.badge}
-                                </span>
-                              )}
-                            </div>
-                            {item.description && (
-                              <p className="text-[11px] text-ink-500 leading-snug mt-0.5 line-clamp-1">
-                                {item.description}
-                              </p>
-                            )}
-                          </Link>
-                        ))}
+                  <Link
+                    key={section.href}
+                    href={section.href}
+                    onClick={() => setOpen(false)}
+                    className={`group flex items-center justify-between rounded-xl px-2.5 py-2 transition-all ${
+                      active
+                        ? "bg-forest-900 text-ivory-100 shadow-xs"
+                        : "text-forest-950 hover:bg-beige-100/80"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[10.5px] font-mono font-bold ${
+                        active 
+                          ? "bg-gold-500 text-forest-950" 
+                          : "bg-beige-200/70 text-forest-900"
+                      }`}>
+                        {section.num}
+                      </span>
+                      <div className="flex flex-col min-w-0 leading-tight">
+                        <span className={`font-serif text-[14.5px] font-semibold truncate ${
+                          active ? "text-ivory-50" : "text-forest-950 group-hover:text-gold-800"
+                        }`}>
+                          {section.label}
+                        </span>
+                        {section.description && (
+                          <span className={`text-[10.5px] truncate font-sans ${
+                            active ? "text-ivory-200/80" : "text-ink-400"
+                          }`}>
+                            {section.description}
+                          </span>
+                        )}
                       </div>
-                    )}
-                  </div>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 shrink-0 ml-2">
+                      {section.badge && (
+                        <span className={`rounded-full px-1.5 py-0.2 text-[8.5px] font-bold uppercase tracking-wider ${
+                          active
+                            ? "bg-gold-500/20 text-gold-300 border border-gold-400/40"
+                            : "bg-gold-100 text-gold-900 border border-gold-500/20"
+                        }`}>
+                          {section.badge}
+                        </span>
+                      )}
+                      <ArrowRight className={`h-3.5 w-3.5 ${active ? "text-gold-300" : "text-ink-400 group-hover:text-gold-700"}`} />
+                    </div>
+                  </Link>
                 );
               })}
+
+              {/* Account & Cart Direct Links */}
+              <div className="mt-3 pt-2.5 border-t border-beige-300 space-y-1">
+                <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-gold-800 mb-1">
+                  Customer &amp; Cart Access
+                </div>
+                <Link
+                  href="/account"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between rounded-xl px-2.5 py-2 text-ink-800 hover:bg-beige-100/80 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5 font-serif text-[14px] font-medium text-forest-950">
+                    <User className="h-4 w-4 text-gold-700" />
+                    <span>My Account &amp; Orders</span>
+                  </div>
+                  <span className="text-[11px] text-gold-800 font-sans font-medium">Sign In &rarr;</span>
+                </Link>
+                <Link
+                  href="/cart"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between rounded-xl px-2.5 py-2 text-ink-800 hover:bg-beige-100/80 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5 font-serif text-[14px] font-medium text-forest-950">
+                    <ShoppingBag className="h-4 w-4 text-gold-700" />
+                    <span>Shopping Cart</span>
+                  </div>
+                  {cartCount > 0 ? (
+                    <span className="rounded-full bg-gold-500 text-forest-950 px-2 py-0.5 text-[10px] font-bold">
+                      {cartCount} item{cartCount === 1 ? "" : "s"}
+                    </span>
+                  ) : (
+                    <span className="text-[11px] text-ink-400 font-sans">0 items</span>
+                  )}
+                </Link>
+              </div>
             </nav>
 
             {/* Bottom Actions Drawer Panel */}
-            <div className="p-5 border-t border-beige-200 bg-white/90 backdrop-blur-xs space-y-2.5">
+            <div className="p-3.5 sm:p-4 border-t border-beige-200 bg-white/95 backdrop-blur-xs space-y-2 shrink-0">
               <Link
                 href="/shop"
                 onClick={() => setOpen(false)}
@@ -464,11 +533,11 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
                 href={`https://wa.me/${whatsapp.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-outline-gold block w-full text-center !py-2.5 !text-[12px] rounded-xl flex items-center justify-center gap-2"
+                className="btn-outline-gold block w-full text-center !py-2 !text-[11.5px] rounded-xl flex items-center justify-center gap-2"
               >
-                <MessageCircle className="h-4 w-4" /> WhatsApp Corporate Desk
+                <MessageCircle className="h-3.5 w-3.5 text-emerald-600" /> WhatsApp Corporate Desk
               </a>
-              <p className="text-[10px] text-center text-ink-400 pt-1 font-mono">
+              <p className="text-[9.5px] text-center text-ink-400 pt-0.5 font-mono">
                 AVRELLE AGRO PVT LTD · Purnia, Bihar
               </p>
             </div>

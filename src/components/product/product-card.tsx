@@ -74,7 +74,7 @@ export function ProductCard({ product }: { product: ProductListItem }) {
         )}
       </Link>
 
-      <div className="flex flex-1 flex-col p-4 sm:p-5">
+      <div className="flex flex-1 flex-col p-3.5 sm:p-5">
         <h3 className="font-serif text-[17px] leading-snug text-forest-900">
           <Link
             href={`/product/${product.slug}?variant=${selectedVariant?.id}`}
@@ -143,10 +143,10 @@ export function ProductCard({ product }: { product: ProductListItem }) {
         </p>
 
         {/* Actions: balanced 2-column grid pinned to bottom of card */}
-        <div className="mt-auto pt-4 grid grid-cols-2 gap-2 w-full">
+        <div className="mt-auto pt-3 sm:pt-4 grid grid-cols-2 gap-1.5 sm:gap-2 w-full">
           <Link
             href={`/product/${product.slug}?variant=${selectedVariant?.id}`}
-            className="btn-outline btn-sm !px-1.5 !py-2.5 text-center flex items-center justify-center text-[11px] font-semibold tracking-wider whitespace-nowrap rounded"
+            className="btn-outline btn-sm !px-1 sm:!px-1.5 !py-2 sm:!py-2.5 text-center flex items-center justify-center text-[10.5px] xs:text-[11px] sm:text-[11.5px] font-semibold tracking-wider whitespace-nowrap rounded"
             aria-label={`View details for ${product.name}`}
           >
             View Details
@@ -154,7 +154,7 @@ export function ProductCard({ product }: { product: ProductListItem }) {
           {selectedVariant && !soldOut ? (
             <AddToCartButton
               size="sm"
-              className="w-full !px-1.5 !py-2.5 text-center flex items-center justify-center text-[11px] font-semibold tracking-wider whitespace-nowrap rounded"
+              className="w-full !px-1 sm:!px-1.5 !py-2 sm:!py-2.5 text-center flex items-center justify-center text-[10.5px] xs:text-[11px] sm:text-[11.5px] font-semibold tracking-wider whitespace-nowrap rounded"
               item={{
                 variantId: selectedVariant.id,
                 productId: product.id,
@@ -169,7 +169,7 @@ export function ProductCard({ product }: { product: ProductListItem }) {
           ) : (
             <button
               disabled
-              className="btn-primary btn-sm w-full !px-1.5 !py-2.5 text-center flex items-center justify-center text-[11px] font-semibold tracking-wider opacity-40 cursor-not-allowed whitespace-nowrap rounded"
+              className="btn-primary btn-sm w-full !px-1 sm:!px-1.5 !py-2 sm:!py-2.5 text-center flex items-center justify-center text-[10.5px] xs:text-[11px] sm:text-[11.5px] font-semibold tracking-wider opacity-40 cursor-not-allowed whitespace-nowrap rounded"
             >
               Sold Out
             </button>
