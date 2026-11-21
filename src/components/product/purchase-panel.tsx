@@ -56,11 +56,10 @@ export function PurchasePanel({ product }: { product: ProductDetail }) {
                 }}
                 disabled={vSoldOut}
                 aria-pressed={selected}
-                className={`relative border px-4 py-2.5 text-left transition-colors ${
-                  selected
-                    ? "border-forest-800 bg-forest-800 text-ivory-100"
-                    : "border-beige-300 bg-white text-ink-800 hover:border-forest-600"
-                } ${vSoldOut ? "cursor-not-allowed opacity-45" : ""}`}
+                className={`relative border px-4 py-2.5 text-left transition-colors ${selected
+                  ? "border-forest-800 bg-forest-800 text-ivory-100"
+                  : "border-beige-300 bg-white text-ink-800 hover:border-forest-600"
+                  } ${vSoldOut ? "cursor-not-allowed opacity-45" : ""}`}
               >
                 <span className="block text-[13.5px] font-semibold">{v.label}</span>
                 <span className={`block text-[12px] ${selected ? "text-gold-300" : "text-ink-500"}`}>

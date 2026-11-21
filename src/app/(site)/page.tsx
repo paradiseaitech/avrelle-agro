@@ -1,26 +1,24 @@
 import type { Metadata } from "next";
-import {
-  getSettings,
-  listFeaturedProducts,
-} from "@/lib/db-data";
-import { ContactStrip } from "@/components/home/contact-strip";
-import { FeaturedProducts } from "@/components/home/featured-products";
-import { HomeHero } from "@/components/home/hero";
-import { GIAnnouncement } from "@/components/home/gi-announcement";
-import { PackSizeShowcase } from "@/components/home/pack-size-showcase";
-import { TrustHighlights } from "@/components/home/trust-highlights";
+import { getSettings, listFeaturedProducts } from "@/lib/db-data";
 import { SampleDataNotice } from "@/components/site/sample-data-notice";
-import { CorporateShowcase } from "@/components/home/corporate-showcase";
+import { HomeHero } from "@/components/home/hero";
+import { ProductCollection } from "@/components/home/product-collection";
+import { FarmToMarket } from "@/components/home/farm-to-market";
+import { OurOriginSection } from "@/components/home/our-origin";
+import { QualityAssuranceSection } from "@/components/home/quality-assurance-section";
+import { GIRecognitionSection } from "@/components/home/gi-recognition-section";
+import { PackSizeShowcase } from "@/components/home/pack-size-showcase";
+import { ContactStrip } from "@/components/home/contact-strip";
 
 export const metadata: Metadata = {
   title: "AVRELLE AGRO | Authorized User of Mithila Makhana GI-696",
   description:
-    "Discover AVRELLE AGRO PRODUCTS PRIVATE LIMITED, an officially recognized Authorized User of Mithila Makhana (GI-696), based in Bihar, India. Explore our makhana products, heritage, processing, and bulk supply offerings.",
+    "Discover AVRELLE AGRO PRODUCTS PRIVATE LIMITED, an officially recognized Authorized User of Mithila Makhana (GI-696), based in Purnea, Bihar, India. Explore our makhana collection, farm-to-market journey, and bulk supply.",
   keywords: [
     "Mithila Makhana",
     "GI Authorized User Mithila Makhana",
     "Makhana company in Bihar",
-    "Makhana supplier in Purnia",
+    "Makhana supplier in Purnea",
     "Fox nuts supplier India",
     "Makhana wholesale",
     "Mithila Makhana bulk supply",
@@ -38,25 +36,29 @@ export default async function HomePage() {
   return (
     <>
       <SampleDataNotice />
-      {/* 1. Hero with exact brand positioning & GI highlight */}
+
+      {/* Section 1: Hero Banner */}
       <HomeHero hero={settings.hero} />
 
-      {/* 2. Official GI Authorized User Recognition Announcement Banner */}
-      <GIAnnouncement gi={settings.giRecognition} />
-      
-      {/* 3. Trust Highlights: Bihar Origin, Sortex Grading, Hygiene, Sourcing */}
-      <TrustHighlights />
+      {/* Section 2: Product Collection (Raw, Graded, Roasted, Flavoured) */}
+      <ProductCollection />
 
-      {/* 4. Corporate Visual Storytelling: Origin, 5 Product Categories, Processing, Quality, Bulk & Exports */}
-      <CorporateShowcase />
+      {/* Section 3: From Farm to Market (6-Stage Visual Journey) */}
+      <FarmToMarket />
 
-      {/* 5. Consumer Retail Packs (100g, 200g, 400g, 500g, 1 kg) with Instant Cart & COD */}
+      {/* Section 4: Our Origin (Rooted in Mithila) */}
+      <OurOriginSection />
+
+      {/* Section 5: Quality Assurance (Quality at Every Step) */}
+      <QualityAssuranceSection />
+
+      {/* Section 6: GI Recognition (Official GI-696 Logo & Statement) */}
+      <GIRecognitionSection gi={settings.giRecognition} />
+
+      {/* Retail Packs Direct Purchase (100g to 1kg with COD & Instant Cart) */}
       <PackSizeShowcase products={featured} />
 
-      {/* 6. Featured Products Catalog Grid */}
-      <FeaturedProducts products={featured} />
-
-      {/* 7. Corporate Contact Strip */}
+      {/* Direct Contact & Support Strip */}
       <ContactStrip business={settings.business} />
     </>
   );

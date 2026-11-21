@@ -74,11 +74,11 @@ interface SampleProduct {
 }
 
 const FIVE_PACK_VARIANTS = [
-  { label: "100 g", weightG: 100, pricePaise: 14900, compareAtPricePaise: 19900, stock: 120, sku: "AVG-PK-100G" },
-  { label: "200 g", weightG: 200, pricePaise: 26900, compareAtPricePaise: 34900, stock: 100, sku: "AVG-PK-200G" },
-  { label: "400 g", weightG: 400, pricePaise: 49900, compareAtPricePaise: 64900, stock: 80, sku: "AVG-PK-400G" },
-  { label: "500 g", weightG: 500, pricePaise: 59900, compareAtPricePaise: 79900, stock: 75, sku: "AVG-PK-500G" },
-  { label: "1 kg", weightG: 1000, pricePaise: 114900, compareAtPricePaise: 149900, stock: 50, sku: "AVG-PK-1KG" },
+  { label: "100 g", weightG: 100, pricePaise: 17900, compareAtPricePaise: 22900, stock: 120, sku: "AVG-PK-100G" },
+  { label: "200 g", weightG: 200, pricePaise: 32900, compareAtPricePaise: 42900, stock: 100, sku: "AVG-PK-200G" },
+  { label: "400 g", weightG: 400, pricePaise: 59900, compareAtPricePaise: 77900, stock: 80, sku: "AVG-PK-400G" },
+  { label: "500 g", weightG: 500, pricePaise: 71900, compareAtPricePaise: 94900, stock: 75, sku: "AVG-PK-500G" },
+  { label: "1 kg", weightG: 1000, pricePaise: 137900, compareAtPricePaise: 179900, stock: 50, sku: "AVG-PK-1KG" },
 ];
 
 const SAMPLE_PRODUCTS: SampleProduct[] = [

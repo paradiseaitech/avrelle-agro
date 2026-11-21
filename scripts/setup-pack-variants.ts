@@ -45,8 +45,8 @@ async function main() {
     {
       label: "100 g",
       weightG: 100,
-      pricePaise: 14900, // ₹149
-      compareAtPricePaise: 19900, // ₹199 (save 25%)
+      pricePaise: 17900, // ₹179 (Rs 179/100G)
+      compareAtPricePaise: 22900, // ₹229 (save 22%)
       stock: 120,
       lowStockThreshold: 15,
       skuSuffix: "100G",
@@ -55,8 +55,8 @@ async function main() {
     {
       label: "200 g",
       weightG: 200,
-      pricePaise: 26900, // ₹269
-      compareAtPricePaise: 34900, // ₹349 (save 23%)
+      pricePaise: 32900, // ₹329
+      compareAtPricePaise: 42900, // ₹429 (save 23%)
       stock: 100,
       lowStockThreshold: 15,
       skuSuffix: "200G",
@@ -65,8 +65,8 @@ async function main() {
     {
       label: "400 g",
       weightG: 400,
-      pricePaise: 49900, // ₹499
-      compareAtPricePaise: 64900, // ₹649 (save 23%)
+      pricePaise: 59900, // ₹599
+      compareAtPricePaise: 77900, // ₹779 (save 23%)
       stock: 80,
       lowStockThreshold: 10,
       skuSuffix: "400G",
@@ -75,8 +75,8 @@ async function main() {
     {
       label: "500 g",
       weightG: 500,
-      pricePaise: 59900, // ₹599
-      compareAtPricePaise: 79900, // ₹799 (save 25%)
+      pricePaise: 71900, // ₹719
+      compareAtPricePaise: 94900, // ₹949 (save 24%)
       stock: 75,
       lowStockThreshold: 10,
       skuSuffix: "500G",
@@ -85,8 +85,8 @@ async function main() {
     {
       label: "1 kg",
       weightG: 1000,
-      pricePaise: 114900, // ₹1,149
-      compareAtPricePaise: 149900, // ₹1,499 (save 23%)
+      pricePaise: 137900, // ₹1,379
+      compareAtPricePaise: 179900, // ₹1,799 (save 23%)
       stock: 50,
       lowStockThreshold: 8,
       skuSuffix: "1KG",
@@ -101,7 +101,7 @@ async function main() {
       .from(schema.productVariants)
       .where(
         eq(schema.productVariants.productId, primaryProduct.id) &&
-          eq(schema.productVariants.weightG, pack.weightG),
+        eq(schema.productVariants.weightG, pack.weightG),
       )
       .limit(1);
 

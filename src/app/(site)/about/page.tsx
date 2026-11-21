@@ -8,12 +8,9 @@ import {
   Users, 
   ShieldCheck, 
   CheckCircle2, 
-  ArrowRight,
-  MapPin,
-  Sparkles,
-  Wheat,
-  Factory,
-  Globe2
+  ArrowRight, 
+  MapPin, 
+  Factory 
 } from "lucide-react";
 import { GIBadge } from "@/components/site/gi-badge";
 
@@ -39,34 +36,33 @@ export default async function AboutPage() {
   const giNumber = giRecognition?.giNumber || "GI-696";
 
   return (
-    <div className="bg-ivory-50 text-forest-950">
-      {/* Header Banner */}
-      <div className="relative overflow-hidden bg-forest-900 botanical-grid py-14 text-ivory-100 sm:py-20 border-b border-gold-500/30">
-        <div className="pointer-events-none absolute inset-4 border border-gold-500/20 sm:inset-6" aria-hidden="true" />
+    <div className="bg-ivory-50 text-charcoal-900">
+      {/* Header Banner - Light & Elegant */}
+      <div className="relative overflow-hidden bg-ivory-50 py-14 sm:py-20 border-b border-beige-200">
         <div className="section-shell relative">
-          <nav aria-label="Breadcrumb" className="text-[12px] text-ivory-100/70">
+          <nav aria-label="Breadcrumb" className="text-[12px] text-muted-grey">
             <ol className="flex flex-wrap items-center gap-1.5">
-              <li><Link href="/" className="hover:text-gold-300">Home</Link></li>
+              <li><Link href="/" className="hover:text-gold-700">Home</Link></li>
               <li aria-hidden="true">/</li>
-              <li className="text-gold-300 font-medium">Company</li>
+              <li className="text-gold-700 font-medium">Company</li>
               <li aria-hidden="true">/</li>
-              <li className="font-medium text-ivory-100">About Us</li>
+              <li className="font-medium text-charcoal-900">About Us</li>
             </ol>
           </nav>
           
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-gold-500/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-gold-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-gold-50 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-gold-800">
               <Building2 className="h-3.5 w-3.5" />
               <span>Corporate Profile · Avrelle Agro Products Private Limited</span>
             </div>
             <GIBadge variant="compact" certNumber={certNumber} giNumber={giNumber} />
           </div>
 
-          <h1 className="mt-4 max-w-3xl font-serif text-[34px] leading-tight text-ivory-50 sm:text-[48px] font-bold">
+          <h1 className="mt-4 max-w-3xl font-serif text-[34px] leading-tight text-charcoal-900 sm:text-[48px] font-bold">
             Rooted in Mithila.<br />
-            <span className="text-gold-400 font-normal">Crafted for Global Agro Excellence.</span>
+            <span className="text-gold-600 font-serif italic font-normal">Crafted for Global Agro Excellence.</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-[15.5px] leading-relaxed text-ivory-100/90 font-light">
+          <p className="mt-5 max-w-2xl text-[15.5px] leading-relaxed text-muted-grey">
             Avrelle Agro Products Private Limited is an agro-processing and makhana enterprise headquartered in Purnia, Bihar.
             As an officially recognized Authorized User of Mithila Makhana (GI-696), we bridge the gap between traditional farming communities and quality-conscious domestic and global markets.
           </p>
@@ -75,18 +71,18 @@ export default async function AboutPage() {
             <Link href="/mithila-makhana-gi-recognition" className="btn-gold flex items-center gap-2 text-[13px]">
               Explore Our GI Recognition <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link href="/origin" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/origin" className="btn-outline text-[13px]">
               Discover Mithila Origin
             </Link>
-            <Link href="/manufacturing" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 text-[13px]">
+            <Link href="/manufacturing" className="btn-outline text-[13px]">
               View Processing Facility
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Prominent GI Authorized User Banner */}
-      <section className="border-b border-beige-300/80 bg-ivory-100 py-6">
+      {/* Prominent GI Authorized User Banner with Official Logo */}
+      <section className="border-b border-beige-200 bg-white py-8">
         <div className="section-shell">
           <div className="mx-auto max-w-5xl">
             <GIBadge variant="banner" certNumber={certNumber} giNumber={giNumber} />
@@ -99,149 +95,93 @@ export default async function AboutPage() {
         <div className="section-shell max-w-5xl">
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-eyebrow text-gold-700">Company History &amp; Evolution</p>
-            <h2 className="mt-2 font-serif text-[30px] sm:text-[40px] font-bold text-forest-950">
+            <h2 className="mt-2 font-serif text-[30px] sm:text-[40px] font-bold text-charcoal-900">
               The Journey of Avrelle Agro Products
             </h2>
-            <p className="mt-3 text-[15px] sm:text-[16px] text-ink-600 leading-relaxed">
+            <span className="ornament-line mt-3 block mx-auto" aria-hidden="true" />
+            <p className="mt-3 text-[15px] sm:text-[16px] text-muted-grey leading-relaxed">
               From our origin in the premier makhana belt of Bihar to building integrated, hygienic processing and global supply capabilities.
             </p>
           </div>
 
           <div className="mt-16 space-y-12">
-            {/* Chapter 1: Beginning */}
-            <div className="relative rounded-2xl border border-beige-300 bg-white p-6 sm:p-10 shadow-sm transition-shadow hover:shadow-md">
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="flex items-center gap-3 md:flex-col md:items-start shrink-0">
-                  <div className="rounded-full bg-forest-900 p-3 text-gold-400">
-                    <Sparkles className="h-6 w-6" />
-                  </div>
-                  <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-gold-700">
-                    Chapter 01
+            {[
+              {
+                num: "01",
+                era: "The Beginning",
+                title: companyHistory?.beginningHeadline || "Deep Roots in Purnea Wetlands",
+                text:
+                  companyHistory?.beginningText ||
+                  "Avrelle Agro Products Private Limited emerged from direct immersion in the makhana heartland of North Bihar. Recognizing the exceptional quality of local aquatic crops alongside the fragmented nature of traditional trading channels, the founders envisioned a modernized agro-enterprise anchored directly at the source.",
+                takeaway: "Direct local presence in the primary aggregation market of Purnea.",
+              },
+              {
+                num: "02",
+                era: "Foundational Sourcing",
+                title: companyHistory?.foundationHeadline || "Empowering Grassroots Harvesters",
+                text:
+                  companyHistory?.foundationText ||
+                  "We instituted fair procurement mechanisms with wetland farming communities across the Kosi and Seemanchal basins. By establishing direct FPC aggregation, we ensured farmers receive fair market compensation while guaranteeing complete traceability for raw Guria seed batches.",
+                takeaway: "Transparent procurement eliminating multi-tiered broker distortion.",
+              },
+              {
+                num: "03",
+                era: "Capacity & Processing",
+                title: companyHistory?.growthHeadline || "Modern Mechanical & Hygienic Standards",
+                text:
+                  companyHistory?.growthText ||
+                  "Investing in Purnea's post-harvest infrastructure, we established modern Sortex optical grading lines, controlled thermal roasting ovens, and food-grade barrier packaging facilities, adhering to strict food safety benchmarks.",
+                takeaway: "Sub-3% roasted moisture and multi-stage calibrated sizing.",
+              },
+              {
+                num: "04",
+                era: "Today & Beyond",
+                title: companyHistory?.todayHeadline || "Official GI-696 Recognition & Global Trade",
+                text:
+                  companyHistory?.todayText ||
+                  `Today, officially recognized as an Authorized User of Mithila Makhana (${giNumber}) under Certificate ${certNumber}, Avrelle serves both Indian households with premium retail packs and global food importers with containerized ocean freight.`,
+                takeaway: "Government-recognized origin provenance and export compliance.",
+              },
+            ].map((ch) => (
+              <div
+                key={ch.num}
+                className="grid gap-6 rounded-2xl border border-beige-300 bg-white p-6 sm:p-8 lg:grid-cols-[140px_1fr] shadow-xs"
+              >
+                <div>
+                  <span className="font-mono text-[32px] sm:text-[40px] font-bold text-gold-500/80 leading-none">
+                    {ch.num}
+                  </span>
+                  <span className="mt-1 block text-[11px] font-bold uppercase tracking-wider text-muted-grey">
+                    {ch.era}
                   </span>
                 </div>
-                <div className="flex-1">
-                  <h3 className="font-serif text-[24px] sm:text-[28px] font-bold text-forest-950">
-                    {companyHistory?.beginningHeadline || "Beginning"}
+                <div>
+                  <h3 className="font-serif text-[20px] sm:text-[22px] font-bold text-charcoal-900">
+                    {ch.title}
                   </h3>
-                  <div className="mt-4 space-y-4 text-[15px] sm:text-[16px] leading-relaxed text-ink-700 font-light whitespace-pre-line">
-                    {companyHistory?.beginningText ||
-                      "Founded with a vision to elevate one of India’s most nutrient-dense superfoods from local harvests to global pantries, Avrelle Agro Products Private Limited began its journey in the heartland of makhana cultivation.\n\nRecognizing the immense potential of fox nuts—and the need for modernized, hygienic, and transparent processing—we set out to bridge the gap between traditional farming communities and quality-conscious consumers."}
+                  <p className="mt-3 text-[14.5px] leading-relaxed text-muted-grey">
+                    {ch.text}
+                  </p>
+                  <div className="mt-4 inline-flex items-center gap-2 rounded-lg bg-ivory-50 px-3 py-1.5 text-[12px] font-medium text-charcoal-800 border border-beige-200">
+                    <CheckCircle2 className="h-4 w-4 text-gold-600 shrink-0" />
+                    <span>{ch.takeaway}</span>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Chapter 2: Our Foundation */}
-            <div className="relative rounded-2xl border-2 border-gold-500/40 bg-gradient-to-br from-ivory-50 to-white p-6 sm:p-10 shadow-sm transition-shadow hover:shadow-md">
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="flex items-center gap-3 md:flex-col md:items-start shrink-0">
-                  <div className="rounded-full bg-gold-500 p-3 text-forest-950">
-                    <Award className="h-6 w-6" />
-                  </div>
-                  <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-gold-700">
-                    Chapter 02
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="font-serif text-[24px] sm:text-[28px] font-bold text-forest-950">
-                      {companyHistory?.foundationHeadline || "Our Foundation"}
-                    </h3>
-                    <span className="rounded bg-gold-500/20 px-2.5 py-0.5 text-[11px] font-mono font-bold text-gold-800">
-                      {giNumber} Authorized User
-                    </span>
-                  </div>
-                  <div className="mt-4 space-y-4 text-[15px] sm:text-[16px] leading-relaxed text-ink-700 font-light whitespace-pre-line">
-                    {companyHistory?.foundationText ||
-                      "From day one, our foundation has been built on direct collaboration with local farmers and harvesters across Bihar’s premier makhana-producing belt.\n\nProudly recognized as an Authorized User of Mithila Makhana (GI-696), we uphold the authentic regional heritage, unique agro-climatic identity, and traditional cultivation practices that distinguish genuine Mithila Makhana.\n\nBy working closely at the grassroots level, we aim to ensure origin traceability and fair value for local cultivators while preserving time-honored pond harvesting and seed-popping expertise."}
-                  </div>
-                  <div className="mt-6 pt-5 border-t border-beige-200 flex flex-wrap items-center justify-between gap-3 text-[12.5px]">
-                    <span className="font-mono font-semibold text-gold-800">
-                      Authorized User Certificate: {certNumber}
-                    </span>
-                    <Link
-                      href="/mithila-makhana-gi-recognition"
-                      className="font-medium text-forest-800 hover:text-gold-700 underline"
-                    >
-                      View GI Recognition Details &rarr;
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapter 3: Our Growth and Capabilities */}
-            <div className="relative rounded-2xl border border-beige-300 bg-white p-6 sm:p-10 shadow-sm transition-shadow hover:shadow-md">
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="flex items-center gap-3 md:flex-col md:items-start shrink-0">
-                  <div className="rounded-full bg-forest-900 p-3 text-gold-400">
-                    <Factory className="h-6 w-6" />
-                  </div>
-                  <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-gold-700">
-                    Chapter 03
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-serif text-[24px] sm:text-[28px] font-bold text-forest-950">
-                    {companyHistory?.growthHeadline || "Our Growth and Capabilities"}
-                  </h3>
-                  <div className="mt-4 space-y-4 text-[15px] sm:text-[16px] leading-relaxed text-ink-700 font-light whitespace-pre-line">
-                    {companyHistory?.growthText ||
-                      "As demand grew, we expanded our capabilities from raw agricultural sourcing into end-to-end processing, grading, and packaging.\n\nBy integrating clean, food-grade sorting, roasting, and moisture-controlled packaging infrastructure, we transform GI-eligible harvests into export-ready, shelf-stable products.\n\nEvery batch undergoes quality checks for size, crunch, purity, and freshness—delivering authenticity across both bulk B2B supplies and retail lines like Super Makhana Raw."}
-                  </div>
-                  <div className="mt-6 pt-5 border-t border-beige-200 flex flex-wrap gap-4">
-                    <Link href="/manufacturing" className="text-[12.5px] font-medium text-forest-800 hover:text-gold-700 underline">
-                      Explore Processing Facility &rarr;
-                    </Link>
-                    <Link href="/quality-assurance" className="text-[12.5px] font-medium text-forest-800 hover:text-gold-700 underline">
-                      Review Quality Protocols &rarr;
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapter 4: Where We Stand Today */}
-            <div className="relative rounded-2xl border border-beige-300 bg-white p-6 sm:p-10 shadow-sm transition-shadow hover:shadow-md">
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="flex items-center gap-3 md:flex-col md:items-start shrink-0">
-                  <div className="rounded-full bg-forest-900 p-3 text-gold-400">
-                    <Globe2 className="h-6 w-6" />
-                  </div>
-                  <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-gold-700">
-                    Chapter 04
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-serif text-[24px] sm:text-[28px] font-bold text-forest-950">
-                    {companyHistory?.todayHeadline || "Where We Stand Today"}
-                  </h3>
-                  <div className="mt-4 space-y-4 text-[15px] sm:text-[16px] leading-relaxed text-ink-700 font-light whitespace-pre-line">
-                    {companyHistory?.todayText ||
-                      "Today, Avrelle Agro Products is building its presence across the makhana value chain, supplying traceable fox nuts to domestic and international markets.\n\nGuided by integrity, regional pride, and continuous innovation, we remain committed to supporting rural livelihoods while bringing authentic Mithila Makhana to the world."}
-                  </div>
-                  <div className="mt-6 pt-5 border-t border-beige-200 flex flex-wrap items-center justify-between gap-3 text-[12.5px]">
-                    <span className="text-ink-500">Purnia, Bihar, India · Domestic &amp; Global Supply</span>
-                    <Link href="/exports" className="font-medium text-forest-800 hover:text-gold-700 underline">
-                      Global Exports Desk &rarr;
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* 7 Strategic Visual Storytelling Pillars */}
-      <section className="bg-forest-950 py-16 sm:py-24 text-ivory-100 border-b border-gold-500/30">
+      {/* Strategic Foundations - Light Theme */}
+      <section className="bg-ivory-100/60 py-16 sm:py-24 border-b border-beige-200">
         <div className="section-shell">
           <div className="max-w-3xl">
-            <p className="text-eyebrow text-gold-400">Our Strategic Foundations</p>
-            <h2 className="mt-2 font-serif text-[30px] sm:text-[40px] font-bold text-ivory-50">
+            <p className="text-eyebrow text-gold-700">Our Strategic Foundations</p>
+            <h2 className="mt-2 font-serif text-[30px] sm:text-[40px] font-bold text-charcoal-900">
               The Seven Pillars of Avrelle Agro
             </h2>
-            <p className="mt-3 text-[15px] sm:text-[16px] text-ivory-200/90 leading-relaxed font-light">
+            <p className="mt-3 text-[15px] sm:text-[16px] text-muted-grey leading-relaxed">
               How we uphold traditional agro-heritage while delivering modern, certified, and traceable excellence.
             </p>
           </div>
@@ -252,40 +192,57 @@ export default async function AboutPage() {
                 title: "Our Roots in Bihar",
                 desc: "Direct operational base in Purnia, situated at the nexus of India's richest wetland makhana ecosystems.",
                 icon: MapPin,
+                image: null,
               },
               {
                 title: "Commitment to Farmers",
                 desc: "Direct procurement partnerships with wetland harvesters, ensuring origin traceability and fair economic returns.",
                 icon: Users,
+                image: null,
               },
               {
                 title: "Processing & Capabilities",
                 desc: "Integrated mechanical grading, sorting, and moisture-controlled packaging from raw harvests to shelf-stable packs.",
                 icon: Factory,
+                image: null,
               },
               {
                 title: "Quality Philosophy",
                 desc: "Stringent sizing benchmarks, zero chemical puffing, and moisture retention guarantees across all batches.",
                 icon: ShieldCheck,
+                image: null,
               },
               {
                 title: "GI Authorized User Recognition",
-                desc: `Officially recognized under GI-696 with Certificate ${certNumber}, celebrating authentic Mithila origin.`,
+                desc: `Proudly recognized as an Authorized User of Mithila Makhana (GI-696) under Certificate ${certNumber}.`,
                 icon: Award,
+                image: "/gitag.jpeg",
               },
               {
                 title: "Vision for the Future",
                 desc: "Positioning Mithila Makhana as a premier, sustainable global superfood across international specialty food markets.",
                 icon: Target,
+                image: null,
               },
             ].map((p, idx) => (
               <div
                 key={idx}
-                className="rounded-xl border border-gold-500/20 bg-forest-900/60 p-6 backdrop-blur-sm transition-all hover:border-gold-500/40"
+                className="rounded-2xl border border-beige-300 bg-white p-6 shadow-xs transition-all hover:border-gold-500 hover:shadow-md"
               >
-                <p.icon className="h-7 w-7 text-gold-400" />
-                <h3 className="mt-4 font-serif text-[18px] font-semibold text-ivory-100">{p.title}</h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-ivory-200/80 font-light">{p.desc}</p>
+                <div className="flex items-center justify-between">
+                  <p.icon className="h-7 w-7 text-gold-600" />
+                  {p.image && (
+                    <img
+                      src={p.image}
+                      alt="Official Mithila Makhana GI Logo"
+                      width={36}
+                      height={40}
+                      className="h-9 w-auto object-contain"
+                    />
+                  )}
+                </div>
+                <h3 className="mt-4 font-serif text-[18px] font-bold text-charcoal-900">{p.title}</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-muted-grey">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -295,22 +252,22 @@ export default async function AboutPage() {
       {/* Corporate Summary & Contact Callout */}
       <section className="py-16 sm:py-20">
         <div className="section-shell">
-          <div className="rounded-2xl border border-beige-300 bg-white p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-sm">
-            <h2 className="font-serif text-[26px] sm:text-[34px] font-bold text-forest-950">
+          <div className="rounded-3xl border border-beige-300 bg-white p-8 sm:p-12 text-center max-w-4xl mx-auto shadow-xs">
+            <h2 className="font-serif text-[26px] sm:text-[34px] font-bold text-charcoal-900">
               Partner With Avrelle Agro Products
             </h2>
-            <p className="mt-3 text-[15px] text-ink-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-3 text-[15px] text-muted-grey max-w-2xl mx-auto leading-relaxed">
               We welcome enquiries from wholesale distributors, private label food brands, international importers, and retail institutional buyers.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link href="/bulk-supply" className="btn-primary">
+              <Link href="/bulk-supply" className="btn-gold">
                 Submit Wholesale Enquiry
               </Link>
               <Link href="/contact" className="btn-outline">
                 Contact Corporate Office
               </Link>
             </div>
-            <p className="mt-6 text-[12px] font-mono text-ink-400">
+            <p className="mt-6 text-[12px] font-mono text-muted-grey">
               Registered Entity: {business.displayName} · Purnia, Bihar, India
             </p>
           </div>

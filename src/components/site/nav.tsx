@@ -162,7 +162,7 @@ export function DesktopNav() {
               key={entry.href}
               href={entry.href}
               className={`relative px-3 py-2 text-[13px] font-medium tracking-[0.04em] transition-colors rounded-lg hover:bg-beige-200/40 ${
-                active ? "text-gold-800 font-semibold" : "text-forest-950/90 hover:text-gold-700"
+                active ? "text-gold-700 font-semibold" : "text-charcoal-900 hover:text-gold-700"
               }`}
               aria-current={active ? "page" : undefined}
             >
@@ -194,7 +194,7 @@ export function DesktopNav() {
             <button
               type="button"
               className={`inline-flex items-center gap-1.5 px-2.5 xl:px-3 py-2 text-[13px] font-medium tracking-[0.04em] transition-colors rounded-lg focus:outline-none hover:bg-beige-200/40 ${
-                isGroupActive || isOpen ? "text-gold-800 font-semibold" : "text-forest-950/90 hover:text-gold-700"
+                isGroupActive || isOpen ? "text-gold-700 font-semibold" : "text-charcoal-900 hover:text-gold-700"
               }`}
               aria-expanded={isOpen}
             >
@@ -223,12 +223,12 @@ export function DesktopNav() {
                           onClick={() => setActiveDropdown(null)}
                           className={`group flex flex-col rounded-xl p-2.5 transition-all ${
                             isItemActive
-                              ? "bg-beige-100/80 text-forest-950 font-medium"
-                              : "text-ink-800 hover:bg-ivory-100 hover:text-forest-950"
+                              ? "bg-ivory-100 text-charcoal-900 font-medium"
+                              : "text-ink-800 hover:bg-ivory-50 hover:text-charcoal-900"
                           }`}
                         >
                           <div className="flex items-center justify-between gap-2">
-                            <span className="font-serif text-[14px] font-semibold text-forest-950 group-hover:text-gold-800">
+                            <span className="font-serif text-[14px] font-semibold text-charcoal-900 group-hover:text-gold-700">
                               {item.label}
                             </span>
                             {item.badge && (
@@ -275,7 +275,7 @@ export function HeaderSearch() {
       <label htmlFor="header-search" className="sr-only">
         Search makhana
       </label>
-      <div className="flex h-9 items-center rounded-full border border-beige-300 bg-white/90 px-3 transition-colors focus-within:border-forest-600 focus-within:bg-white shadow-xs">
+      <div className="flex h-9 items-center rounded-full border border-beige-300 bg-white/90 px-3 transition-colors focus-within:border-gold-500 focus-within:bg-white shadow-xs">
         <Search className="h-3.5 w-3.5 text-ink-400 shrink-0 mr-2" />
         <input
           id="header-search"
@@ -339,7 +339,7 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-forest-900 hover:bg-beige-200/50 transition-colors lg:hidden focus:outline-none"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-charcoal-900 hover:bg-ivory-100 transition-colors lg:hidden focus:outline-none"
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label="Open navigation menu"
@@ -351,7 +351,7 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
         <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-forest-950/65 backdrop-blur-xs transition-opacity duration-300"
+            className="absolute inset-0 bg-charcoal-900/40 backdrop-blur-xs transition-opacity duration-300"
             aria-hidden="true"
             onClick={() => setOpen(false)}
           />
@@ -373,7 +373,7 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
                   aria-hidden="true"
                 />
                 <div className="flex flex-col min-w-0">
-                  <span className="font-serif text-[15px] sm:text-[17px] font-bold tracking-[0.12em] sm:tracking-[0.14em] text-forest-950 leading-none truncate">
+                  <span className="font-serif text-[15px] sm:text-[17px] font-bold tracking-[0.12em] sm:tracking-[0.14em] text-charcoal-900 leading-none truncate">
                     AVRELLE AGRO
                   </span>
                   <span className="text-[9px] sm:text-[9.5px] uppercase tracking-[0.16em] sm:tracking-[0.18em] text-gold-700 font-semibold mt-0.5 truncate">
@@ -384,7 +384,7 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-beige-300 bg-white text-forest-900 hover:bg-beige-100 transition-colors shadow-xs shrink-0 ml-2"
+                className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-beige-300 bg-white text-charcoal-900 hover:bg-beige-100 transition-colors shadow-xs shrink-0 ml-2 cursor-pointer"
                 aria-label="Close menu"
               >
                 <X className="h-4 w-4" />
@@ -433,21 +433,21 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
                     onClick={() => setOpen(false)}
                     className={`group flex items-center justify-between rounded-xl px-2.5 py-2 transition-all ${
                       active
-                        ? "bg-forest-900 text-ivory-100 shadow-xs"
-                        : "text-forest-950 hover:bg-beige-100/80"
+                        ? "bg-charcoal-900 text-white shadow-xs"
+                        : "text-charcoal-900 hover:bg-beige-100/80"
                     }`}
                   >
                     <div className="flex items-center gap-2.5 min-w-0">
                       <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[10.5px] font-mono font-bold ${
                         active 
-                          ? "bg-gold-500 text-forest-950" 
-                          : "bg-beige-200/70 text-forest-900"
+                          ? "bg-gold-500 text-white" 
+                          : "bg-beige-200/70 text-charcoal-900"
                       }`}>
                         {section.num}
                       </span>
                       <div className="flex flex-col min-w-0 leading-tight">
                         <span className={`font-serif text-[14.5px] font-semibold truncate ${
-                          active ? "text-ivory-50" : "text-forest-950 group-hover:text-gold-800"
+                          active ? "text-white" : "text-charcoal-900 group-hover:text-gold-700"
                         }`}>
                           {section.label}
                         </span>
@@ -487,7 +487,7 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-between rounded-xl px-2.5 py-2 text-ink-800 hover:bg-beige-100/80 transition-colors"
                 >
-                  <div className="flex items-center gap-2.5 font-serif text-[14px] font-medium text-forest-950">
+                  <div className="flex items-center gap-2.5 font-serif text-[14px] font-medium text-charcoal-900">
                     <User className="h-4 w-4 text-gold-700" />
                     <span>My Account &amp; Orders</span>
                   </div>
@@ -498,12 +498,12 @@ export function MobileNavToggle({ whatsapp }: { whatsapp: string }) {
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-between rounded-xl px-2.5 py-2 text-ink-800 hover:bg-beige-100/80 transition-colors"
                 >
-                  <div className="flex items-center gap-2.5 font-serif text-[14px] font-medium text-forest-950">
+                  <div className="flex items-center gap-2.5 font-serif text-[14px] font-medium text-charcoal-900">
                     <ShoppingBag className="h-4 w-4 text-gold-700" />
                     <span>Shopping Cart</span>
                   </div>
                   {cartCount > 0 ? (
-                    <span className="rounded-full bg-gold-500 text-forest-950 px-2 py-0.5 text-[10px] font-bold">
+                    <span className="rounded-full bg-gold-500 text-white px-2 py-0.5 text-[10px] font-bold">
                       {cartCount} item{cartCount === 1 ? "" : "s"}
                     </span>
                   ) : (

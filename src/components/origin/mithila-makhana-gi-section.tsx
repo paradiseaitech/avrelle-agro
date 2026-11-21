@@ -192,13 +192,27 @@ export function MithilaMakhanaGISection() {
           ))}
         </div>
 
-        {/* Preservation Callout */}
-        <div className="mt-10 sm:mt-12 rounded-2xl border border-gold-500/40 bg-gradient-to-r from-gold-50/80 via-ivory-50 to-gold-50/80 p-5 sm:p-8 lg:p-9 shadow-sm text-center max-w-4xl mx-auto">
-          <Sparkles className="h-7 w-7 text-gold-700 mx-auto" />
-          <h3 className="mt-3 font-serif text-[22px] font-bold text-forest-900 sm:text-[26px]">
+        {/* Preservation Callout with Official GI Logo */}
+        <div className="mt-10 sm:mt-12 rounded-3xl border border-gold-500/40 bg-gradient-to-r from-gold-50/80 via-white to-gold-50/80 p-6 sm:p-8 lg:p-10 shadow-xs text-center max-w-4xl mx-auto">
+          <div className="mx-auto mb-4 flex justify-center">
+            <img
+              src="/gitag.jpeg"
+              alt="Official Mithila Makhana GI Logo (GI-696)"
+              width={80}
+              height={86}
+              className="h-20 w-auto object-contain"
+            />
+          </div>
+          <h3 className="font-serif text-[22px] font-bold text-charcoal-900 sm:text-[26px]">
             Preserving Authenticity for Future Generations
           </h3>
-          <p className="mt-3 text-[14.5px] leading-relaxed text-ink-700 max-w-3xl mx-auto">
+          <p className="mt-2 font-serif text-[16px] italic text-gold-700">
+            &ldquo;Proudly recognized as an Authorized User of Mithila Makhana (GI-696).&rdquo;
+          </p>
+          <p className="mt-2 text-[12px] font-mono font-semibold text-charcoal-700">
+            Authorized User Certificate Number: AU/48155/GI/696/76
+          </p>
+          <p className="mt-3 text-[14px] leading-relaxed text-muted-grey max-w-2xl mx-auto">
             {MITHILA_GI_CONTENT.preservationStatement}
           </p>
           <div className="mt-6">

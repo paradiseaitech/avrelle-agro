@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getSettings } from "@/lib/db-data";
 import { SocialMediaLinks } from "@/components/site/social-links";
-import { ShieldCheck, Globe, Building2, MapPin, Award } from "lucide-react";
+import { ShieldCheck, Globe, MapPin } from "lucide-react";
 import { GIBadge } from "@/components/site/gi-badge";
 
 const corporateLinks = [
@@ -15,7 +15,7 @@ const corporateLinks = [
 ];
 
 const productTradeLinks = [
-  { href: "/products", label: "Product Portfolio (5 Categories)" },
+  { href: "/products", label: "Product Portfolio (4 Categories)" },
   { href: "/grades", label: "Makhana Grading Standards" },
   { href: "/bulk-supply", label: "B2B Bulk Supply (Domestic)" },
   { href: "/exports", label: "International Exports & Logistics" },
@@ -36,20 +36,20 @@ export async function SiteFooter() {
   const waNumber = business.whatsapp.replace(/\D/g, "");
 
   return (
-    <footer className="mt-auto bg-forest-950 text-ivory-100 border-t border-gold-500/20">
-      {/* Top Corporate Strip */}
-      <div className="border-b border-ivory-100/10 bg-forest-900/60 py-4 sm:py-6">
-        <div className="section-shell flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-between gap-2.5 sm:gap-4 text-[12px] sm:text-[12.5px] text-ivory-100/80">
+    <footer className="mt-auto bg-ivory-100 text-charcoal-900 border-t border-beige-200">
+      {/* Top Corporate Strip - Crisp Light Surface */}
+      <div className="border-b border-beige-200 bg-white py-4 sm:py-5">
+        <div className="section-shell flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center justify-between gap-2.5 sm:gap-4 text-[12px] sm:text-[12.5px] text-muted-grey">
           <div className="flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-gold-400 shrink-0" />
-            <span>Processing &amp; Sourcing Hub: <strong>Purnea, Bihar, India</strong></span>
+            <MapPin className="h-4 w-4 text-gold-600 shrink-0" />
+            <span>Processing &amp; Sourcing Hub: <strong className="text-charcoal-900">Purnea, Bihar, India</strong></span>
           </div>
           <div className="flex items-center gap-2">
-            <ShieldCheck className="h-4 w-4 text-gold-400 shrink-0" />
+            <ShieldCheck className="h-4 w-4 text-gold-600 shrink-0" />
             <span>Food Safety, Multi-Stage Grading &amp; Hygienic Packaging</span>
           </div>
           <div className="flex items-center gap-2">
-            <Globe className="h-4 w-4 text-gold-400 shrink-0" />
+            <Globe className="h-4 w-4 text-gold-600 shrink-0" />
             <span>Domestic Bulk Supply &amp; Global Export Ready</span>
           </div>
         </div>
@@ -61,13 +61,13 @@ export async function SiteFooter() {
           <div className="flex items-center gap-3">
             <img src="/brand/logo-mark.svg" alt="" width={42} height={42} className="h-10 w-10" aria-hidden="true" />
             <div>
-              <p className="font-serif text-lg tracking-[0.16em] text-ivory-50 font-bold">AVRELLE AGRO</p>
-              <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-luxe text-gold-400">
+              <p className="font-serif text-lg tracking-[0.14em] text-charcoal-900 font-bold">AVRELLE AGRO</p>
+              <p className="mt-0.5 text-[9px] font-semibold uppercase tracking-luxe text-gold-700">
                 Pvt Ltd · Mithila Makhana
               </p>
             </div>
           </div>
-          <p className="mt-4 font-serif text-[14px] italic text-gold-300">
+          <p className="mt-4 font-serif text-[14px] italic text-gold-700">
             &ldquo;Bringing the Finest of Mithila Makhana to the World.&rdquo;
           </p>
 
@@ -75,28 +75,28 @@ export async function SiteFooter() {
             <GIBadge variant="subtle" />
           </div>
 
-          <address className="mt-4 space-y-1.5 text-[13px] not-italic text-ivory-100/80 leading-relaxed">
-            <p className="font-medium text-ivory-50">{business.displayName}</p>
+          <address className="mt-4 space-y-1.5 text-[13px] not-italic text-muted-grey leading-relaxed">
+            <p className="font-semibold text-charcoal-900">{business.displayName}</p>
             <p>{business.addressLine}, {business.city}, {business.state}, India</p>
             <p>
               Corporate Inquiries:{" "}
-              <a href={`tel:${business.phone.replace(/\s/g, "")}`} className="hover:text-gold-300 text-gold-400 font-medium">
+              <a href={`tel:${business.phone.replace(/\s/g, "")}`} className="hover:text-gold-700 text-charcoal-900 font-medium">
                 {business.phone}
               </a>
             </p>
             <p>
               Email:{" "}
-              <a href={`mailto:${business.email}`} className="hover:text-gold-300 text-ivory-100 underline underline-offset-2">
+              <a href={`mailto:${business.email}`} className="hover:text-gold-700 text-charcoal-900 underline underline-offset-2">
                 {business.email}
               </a>
             </p>
           </address>
           {business.showGst && business.gstNumber && (
-            <p className="mt-2 text-[11.5px] text-ivory-100/60 font-mono">GSTIN: {business.gstNumber}</p>
+            <p className="mt-2 text-[11.5px] text-muted-grey font-mono">GSTIN: {business.gstNumber}</p>
           )}
 
-          <div className="mt-5 border-t border-ivory-100/10 pt-4">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-gold-400 mb-2.5">
+          <div className="mt-5 border-t border-beige-200 pt-4">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-gold-700 mb-2.5">
               Connect With Us
             </p>
             <SocialMediaLinks />
@@ -105,12 +105,12 @@ export async function SiteFooter() {
 
         {/* Col 2: Corporate & Operations */}
         <nav aria-label="Corporate">
-          <h2 className="text-eyebrow !text-gold-400">Company &amp; Quality</h2>
-          <ul className="mt-4 space-y-2.5 text-[13px] text-ivory-100/85">
+          <h2 className="text-eyebrow !text-gold-700">Company &amp; Quality</h2>
+          <ul className="mt-4 space-y-2.5 text-[13px] text-muted-grey">
             {corporateLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="transition-colors hover:text-gold-300 flex items-center gap-1.5">
-                  <span className="h-1 w-1 rounded-full bg-gold-400/60" />
+                <Link href={l.href} className="transition-colors hover:text-gold-700 flex items-center gap-1.5">
+                  <span className="h-1 w-1 rounded-full bg-gold-500" />
                   {l.label}
                 </Link>
               </li>
@@ -120,12 +120,12 @@ export async function SiteFooter() {
 
         {/* Col 3: Products & Trade */}
         <nav aria-label="Products & B2B">
-          <h2 className="text-eyebrow !text-gold-400">Products &amp; Trade</h2>
-          <ul className="mt-4 space-y-2.5 text-[13px] text-ivory-100/85">
+          <h2 className="text-eyebrow !text-gold-700">Products &amp; Trade</h2>
+          <ul className="mt-4 space-y-2.5 text-[13px] text-muted-grey">
             {productTradeLinks.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="transition-colors hover:text-gold-300 flex items-center gap-1.5">
-                  <span className="h-1 w-1 rounded-full bg-gold-400/60" />
+                <Link href={l.href} className="transition-colors hover:text-gold-700 flex items-center gap-1.5">
+                  <span className="h-1 w-1 rounded-full bg-gold-500" />
                   {l.label}
                 </Link>
               </li>
@@ -135,22 +135,22 @@ export async function SiteFooter() {
 
         {/* Col 4: Commercial Portals & Support */}
         <div>
-          <h2 className="text-eyebrow !text-gold-400">Trade Enquiries</h2>
-          <p className="mt-4 text-[13px] leading-relaxed text-ivory-100/85">
+          <h2 className="text-eyebrow !text-gold-700">Trade Enquiries</h2>
+          <p className="mt-4 text-[13px] leading-relaxed text-muted-grey">
             Direct agro-processing supply from Purnea, Bihar. Ex-factory quotations, 8 kg White PP bags with 100μ liner, custom master packaging, and export container freight.
           </p>
           <div className="mt-5 flex flex-col gap-2.5">
             <Link href="/bulk-supply" className="btn-gold btn-sm w-full text-center">
               Request Wholesale Quote
             </Link>
-            <Link href="/exports" className="btn-outline-gold !border-ivory-100/30 !text-ivory-100 hover:!border-gold-400 btn-sm w-full text-center">
+            <Link href="/exports" className="btn-outline btn-sm w-full text-center">
               International Export Desk
             </Link>
             <a
               href={`https://wa.me/${waNumber}?text=${encodeURIComponent("Hello AVRELLE AGRO, I am contacting you for corporate makhana supply enquiry.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-center text-[12px] font-medium text-gold-300 hover:underline pt-1"
+              className="text-center text-[12px] font-medium text-gold-700 hover:underline pt-1"
             >
               Direct WhatsApp Support →
             </a>
@@ -159,19 +159,19 @@ export async function SiteFooter() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-ivory-100/10 bg-forest-950 py-5">
-        <div className="section-shell flex flex-col items-center justify-between gap-3 text-[11.5px] sm:text-[12px] text-ivory-100/60 text-center sm:text-left sm:flex-row">
+      <div className="border-t border-beige-200 bg-ivory-50 py-5">
+        <div className="section-shell flex flex-col items-center justify-between gap-3 text-[11.5px] sm:text-[12px] text-muted-grey text-center sm:text-left sm:flex-row">
           <p>
             © {new Date().getFullYear()} AVRELLE AGRO PRODUCTS PRIVATE LIMITED. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-[11px] sm:text-[11.5px]">
             {policyLinks.slice(2).map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-gold-300">
+              <Link key={l.href} href={l.href} className="hover:text-gold-700">
                 {l.label}
               </Link>
             ))}
           </div>
-          <p className="text-[11px] sm:text-[12px]">Rooted in Mithila · Purnia, Bihar, India</p>
+          <p className="text-[11px] sm:text-[12px] font-medium text-charcoal-900">Rooted in Mithila · Purnea, Bihar, India</p>
         </div>
       </div>
     </footer>

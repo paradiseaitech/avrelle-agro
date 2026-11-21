@@ -29,8 +29,8 @@ const PACK_DEFINITIONS: PackDefinition[] = [
     badge: "Pocket & Trial",
     tagline: "Grab-and-go healthy snacking",
     description: "Compact trial pack for your desk, travel bag, or daily work munching.",
-    pricePaise: 14900,
-    compareAtPricePaise: 19900,
+    pricePaise: 17900,
+    compareAtPricePaise: 22900,
     image: "/brand/100g.png",
     defaultVariantId: "fdbfb80b-a161-4fcb-b96d-d29ebf4f713e",
     highlights: ["Single-serve freshness", "Fits bags & lunchboxes", "Airtight sealed"],
@@ -41,8 +41,8 @@ const PACK_DEFINITIONS: PackDefinition[] = [
     badge: "Daily Munch",
     tagline: "Weekly wellness snack portion",
     description: "Ideal quantity for active fitness enthusiasts seeking protein and low glycemic index.",
-    pricePaise: 26900,
-    compareAtPricePaise: 34900,
+    pricePaise: 32900,
+    compareAtPricePaise: 42900,
     image: "/brand/200g.png",
     defaultVariantId: "d27c5b48-4c41-413c-ac46-cbd659d6994a",
     highlights: ["High calcium & fiber", "Zero cholesterol", "Evenly roasted crunch"],
@@ -53,8 +53,8 @@ const PACK_DEFINITIONS: PackDefinition[] = [
     badge: "Family Choice",
     tagline: "Balanced size for sharing",
     description: "Generous value size for couples and small families for evening teas and wholesome snacks.",
-    pricePaise: 49900,
-    compareAtPricePaise: 64900,
+    pricePaise: 59900,
+    compareAtPricePaise: 77900,
     image: "/brand/400g.png",
     defaultVariantId: "7e825062-e639-4ba9-b1d7-5ccb255ac7d2",
     highlights: ["Resealable freshness lock", "23% savings on MRP", "Family favorite"],
@@ -66,11 +66,11 @@ const PACK_DEFINITIONS: PackDefinition[] = [
     isPopular: true,
     tagline: "Home pantry & fasting essential",
     description: "The classic kitchen pantry pack for curries, desserts, vrat recipes, and daily snacking.",
-    pricePaise: 59900,
-    compareAtPricePaise: 79900,
+    pricePaise: 71900,
+    compareAtPricePaise: 94900,
     image: "/brand/500g.png",
     defaultVariantId: "778c9099-0e4a-4a57-95c2-fb74717fb169",
-    highlights: ["25% savings on MRP", "Vrat & festival pure", "Nitrogen-flushed pack"],
+    highlights: ["24% savings on MRP", "Vrat & festival pure", "Nitrogen-flushed pack"],
   },
   {
     weightG: 1000,
@@ -78,8 +78,8 @@ const PACK_DEFINITIONS: PackDefinition[] = [
     badge: "Best Value · Mega Saver",
     tagline: "Maximum savings for regular consumers",
     description: "Our largest retail saver pack. Handpicked jumbo pops with best-in-class price per gram.",
-    pricePaise: 114900,
-    compareAtPricePaise: 149900,
+    pricePaise: 137900,
+    compareAtPricePaise: 179900,
     image: "/brand/1kg.png",
     defaultVariantId: "ddfef1b7-d52e-4dea-a377-83217c33843e",
     highlights: ["Maximum economy rate", "Lowest price per gram", "Long shelf life pouch"],
@@ -118,7 +118,10 @@ export function PackSizeShowcase({
     let matchedVariant: ProductVariantItem | undefined;
     if (primaryProduct?.variants) {
       matchedVariant = primaryProduct.variants.find(
-        (v) => v.weightG === pack.weightG || v.label.toLowerCase().includes(`${pack.weightG}g`) || (pack.weightG === 1000 && /1\s*kg/i.test(v.label)),
+        (v) =>
+          v.weightG === pack.weightG ||
+          v.label.toLowerCase().includes(`${pack.weightG}g`) ||
+          (pack.weightG === 1000 && /1\s*kg/i.test(v.label)),
       );
     }
 
@@ -176,17 +179,18 @@ export function PackSizeShowcase({
       <div className="section-shell">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-gold-100/60 px-4 py-1 text-[11px] font-semibold uppercase tracking-wider text-gold-900 shadow-xs">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/40 bg-gold-50 px-4 py-1 text-[11px] font-semibold uppercase tracking-wider text-gold-900 shadow-xs">
             <Sparkles className="h-3.5 w-3.5 text-gold-700" />
             Retail Packs · Ready to Ship
           </div>
           <h2
             id="pack-size-heading"
-            className="mt-4 font-serif text-[32px] font-bold text-forest-950 sm:text-[42px] leading-tight"
+            className="mt-4 font-serif text-[30px] font-bold text-charcoal-900 sm:text-[40px] leading-tight"
           >
             Choose Your Makhana Pack Size
           </h2>
-          <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-ink-600">
+          <span className="ornament-line mt-3 block mx-auto" aria-hidden="true" />
+          <p className="mt-3 text-[15px] sm:text-base leading-relaxed text-muted-grey">
             From single-serve snack pouches to family pantry packs. Every pack is freshly roasted,
             vacuum sealed, and shipped directly from Purnea, Bihar with <strong>Cash on Delivery</strong> available.
           </p>
@@ -205,27 +209,27 @@ export function PackSizeShowcase({
             return (
               <div
                 key={pack.weightG}
-                className={`group relative flex flex-col rounded-2xl bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+                className={`group relative flex flex-col rounded-2xl bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                   pack.isPopular
-                    ? "border-2 border-gold-500 shadow-lg ring-4 ring-gold-400/10"
-                    : "border border-beige-200/90 shadow-sm hover:border-gold-400"
+                    ? "border-2 border-gold-500 shadow-md ring-4 ring-gold-400/10"
+                    : "border border-beige-300 shadow-xs hover:border-gold-400"
                 }`}
               >
                 {/* Popular / Best Value Badge */}
                 {pack.isPopular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-forest-900 px-3.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-gold-300 shadow-md border border-gold-500/50">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gold-500 px-3.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
                     ★ {pack.badge}
                   </span>
                 )}
 
                 {!pack.isPopular && (
-                  <span className="mb-2 self-start rounded-full bg-beige-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-ink-700">
+                  <span className="mb-2 self-start rounded-full bg-ivory-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-charcoal-800 border border-beige-200">
                     {pack.badge}
                   </span>
                 )}
 
                 {/* Packaging Image */}
-                <div className="relative my-2 flex h-48 w-full items-center justify-center overflow-hidden rounded-xl bg-ivory-100/70 p-2">
+                <div className="relative my-2 flex h-48 w-full items-center justify-center overflow-hidden rounded-xl bg-ivory-50 p-2 border border-beige-200">
                   <img
                     src={resolved.image}
                     alt={`AVRELLE Phool Makhana ${pack.label}`}
@@ -237,40 +241,40 @@ export function PackSizeShowcase({
                       {discountPct}% OFF
                     </span>
                   )}
-                  <span className="absolute bottom-2 left-2 rounded bg-forest-950/80 px-2 py-0.5 text-[11px] font-mono font-semibold text-gold-300 backdrop-blur-xs">
+                  <span className="absolute bottom-2 left-2 rounded bg-charcoal-900/80 px-2 py-0.5 text-[10.5px] font-mono font-semibold text-white backdrop-blur-xs">
                     {pack.weightG >= 1000 ? "1 KG" : `${pack.weightG}g`}
                   </span>
                 </div>
 
                 {/* Pack Title & Tagline */}
                 <div className="mt-2">
-                  <h3 className="font-serif text-[19px] font-bold text-forest-950">
+                  <h3 className="font-serif text-[18px] font-bold text-charcoal-900">
                     {pack.label}
                   </h3>
-                  <p className="mt-1 text-[12px] font-medium text-ink-500 line-clamp-1">
+                  <p className="mt-1 text-[12px] font-medium text-muted-grey line-clamp-1">
                     {pack.tagline}
                   </p>
                 </div>
 
                 {/* Pricing Block */}
-                <div className="mt-3 border-y border-beige-200/80 py-2.5">
+                <div className="mt-3 border-y border-beige-200 py-2.5">
                   <div className="flex items-baseline gap-2">
-                    <span className="font-serif text-[22px] font-bold text-forest-900">
+                    <span className="font-serif text-[22px] font-bold text-charcoal-900">
                       {formatINR(resolved.pricePaise)}
                     </span>
                     {resolved.compareAtPricePaise > resolved.pricePaise && (
-                      <span className="text-[12px] text-ink-400 line-through">
+                      <span className="text-[12px] text-muted-grey line-through">
                         {formatINR(resolved.compareAtPricePaise)}
                       </span>
                     )}
                   </div>
-                  <p className="mt-0.5 text-[10.5px] text-ink-500">
+                  <p className="mt-0.5 text-[10.5px] text-muted-grey">
                     Inclusive of all taxes · COD available
                   </p>
                 </div>
 
                 {/* Quality Highlights */}
-                <ul className="mt-3 space-y-1 text-[11.5px] text-ink-600">
+                <ul className="mt-3 space-y-1 text-[11.5px] text-muted-grey">
                   {pack.highlights.map((h) => (
                     <li key={h} className="flex items-center gap-1.5">
                       <Check className="h-3 w-3 shrink-0 text-gold-600" />
@@ -282,24 +286,24 @@ export function PackSizeShowcase({
                 {/* Quantity and Actions */}
                 <div className="mt-auto pt-4 space-y-2">
                   {/* Quantity selector */}
-                  <div className="flex items-center justify-between rounded-lg border border-beige-200 bg-ivory-50/80 px-2.5 py-1">
-                    <span className="text-[11px] font-medium text-ink-600">Quantity:</span>
+                  <div className="flex items-center justify-between rounded-lg border border-beige-200 bg-ivory-50 px-2.5 py-1">
+                    <span className="text-[11px] font-medium text-muted-grey">Quantity:</span>
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
                         onClick={() => handleQuantityChange(pack.weightG, -1)}
-                        className="rounded p-1 text-ink-600 hover:bg-beige-200 transition-colors"
+                        className="rounded p-1 text-charcoal-800 hover:bg-beige-200 transition-colors cursor-pointer"
                         aria-label={`Decrease quantity for ${pack.label}`}
                       >
                         <Minus className="h-3 w-3" />
                       </button>
-                      <span className="w-5 text-center text-[12px] font-bold font-mono text-forest-950">
+                      <span className="w-5 text-center text-[12px] font-bold font-mono text-charcoal-900">
                         {qty}
                       </span>
                       <button
                         type="button"
                         onClick={() => handleQuantityChange(pack.weightG, 1)}
-                        className="rounded p-1 text-ink-600 hover:bg-beige-200 transition-colors"
+                        className="rounded p-1 text-charcoal-800 hover:bg-beige-200 transition-colors cursor-pointer"
                         aria-label={`Increase quantity for ${pack.label}`}
                       >
                         <Plus className="h-3 w-3" />
@@ -311,9 +315,9 @@ export function PackSizeShowcase({
                   <button
                     type="button"
                     onClick={() => handleAddToCart(pack)}
-                    className={`w-full rounded-lg py-2 text-[12px] font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 ${
+                    className={`w-full rounded-lg py-2 text-[12px] font-bold tracking-wider transition-all duration-200 flex items-center justify-center gap-1.5 cursor-pointer ${
                       isAdded
-                        ? "bg-forest-900 text-gold-300 shadow-inner"
+                        ? "bg-charcoal-900 text-gold-300 shadow-inner"
                         : pack.isPopular
                         ? "btn-gold"
                         : "btn-primary"
@@ -336,7 +340,7 @@ export function PackSizeShowcase({
                   <button
                     type="button"
                     onClick={() => handleBuyNow(pack)}
-                    className="w-full text-center text-[11px] font-semibold text-forest-900 underline underline-offset-2 hover:text-gold-700 transition-colors py-0.5"
+                    className="w-full text-center text-[11px] font-semibold text-charcoal-900 underline underline-offset-2 hover:text-gold-700 transition-colors py-0.5 cursor-pointer"
                   >
                     Buy Now with Instant Checkout →
                   </button>
@@ -347,47 +351,47 @@ export function PackSizeShowcase({
         </div>
 
         {/* Commercial Trust Strip */}
-        <div className="mt-12 rounded-2xl border border-beige-200 bg-white p-5 sm:p-6 shadow-sm">
+        <div className="mt-12 rounded-2xl border border-beige-300 bg-white p-5 sm:p-6 shadow-xs">
           <div className="grid gap-4 sm:grid-cols-3 text-center sm:text-left divide-y sm:divide-y-0 sm:divide-x divide-beige-200">
             <div className="flex items-center gap-3.5 justify-center sm:justify-start sm:px-4">
-              <div className="rounded-full bg-gold-100 p-2.5 text-gold-800">
+              <div className="rounded-full bg-gold-50 p-2.5 text-gold-700 border border-gold-200">
                 <Truck className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="font-serif text-[15px] font-bold text-forest-950">
+                <h4 className="font-serif text-[15px] font-bold text-charcoal-900">
                   Cash on Delivery &amp; Fast Dispatch
                 </h4>
-                <p className="text-[12px] text-ink-500">
+                <p className="text-[12px] text-muted-grey">
                   Reliable delivery across all serviceable Indian PIN codes.
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3.5 justify-center sm:justify-start sm:px-4 pt-3 sm:pt-0">
-              <div className="rounded-full bg-gold-100 p-2.5 text-gold-800">
+              <div className="rounded-full bg-gold-50 p-2.5 text-gold-700 border border-gold-200">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="font-serif text-[15px] font-bold text-forest-950">
+                <h4 className="font-serif text-[15px] font-bold text-charcoal-900">
                   100% Purnea Authentic
                 </h4>
-                <p className="text-[12px] text-ink-500">
+                <p className="text-[12px] text-muted-grey">
                   Naturally harvested &amp; processed in the makhana capital of India.
                 </p>
               </div>
             </div>
 
             <div className="flex items-center gap-3.5 justify-center sm:justify-start sm:px-4 pt-3 sm:pt-0">
-              <div className="rounded-full bg-forest-100 p-2.5 text-forest-900">
+              <div className="rounded-full bg-sage-50 p-2.5 text-sage-700 border border-sage-200">
                 <ShoppingBag className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="font-serif text-[15px] font-bold text-forest-950">
+                <h4 className="font-serif text-[15px] font-bold text-charcoal-900">
                   Need Commercial Volume?
                 </h4>
                 <Link
                   href="/bulk-orders"
-                  className="inline-flex items-center gap-1 text-[12px] font-bold text-forest-900 hover:text-gold-700 underline"
+                  className="inline-flex items-center gap-1 text-[12px] font-bold text-charcoal-900 hover:text-gold-700 underline"
                 >
                   View 8-Tier Wholesale Rate Card (₹350–₹1,275/kg)
                   <ArrowRight className="h-3 w-3" />

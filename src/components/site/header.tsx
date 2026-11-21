@@ -11,9 +11,9 @@ export async function SiteHeader() {
   const { business } = await getSettings();
 
   return (
-    <header className="sticky top-0 z-40 w-full">
+    <header className="sticky top-0 z-40 w-full shadow-xs">
       <AnnouncementBar />
-      <div className="border-b border-beige-300/80 bg-ivory-50/95 backdrop-blur-md supports-[backdrop-filter]:bg-ivory-50/90 transition-all">
+      <div className="border-b border-beige-200 bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/90 transition-all">
         <div className="section-shell flex h-[64px] sm:h-[74px] items-center justify-between gap-2 sm:gap-4">
           
           {/* Left: Mobile Nav Toggle & Brand Lockup */}
@@ -33,7 +33,7 @@ export async function SiteHeader() {
                 aria-hidden="true"
               />
               <span className="flex flex-col leading-none min-w-0">
-                <span className="font-serif text-[15px] xs:text-[17px] sm:text-[19px] lg:text-[20px] font-bold tracking-[0.08em] xs:tracking-[0.12em] text-forest-950 truncate">
+                <span className="font-serif text-[15px] xs:text-[17px] sm:text-[19px] lg:text-[20px] font-bold tracking-[0.08em] xs:tracking-[0.12em] text-charcoal-900 truncate">
                   AVRELLE AGRO
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.18em] font-semibold text-gold-700 mt-1 hidden sm:inline-block">
@@ -57,7 +57,7 @@ export async function SiteHeader() {
             {/* Quick Shop CTA Pill (Desktop XL+) */}
             <Link
               href="/shop"
-              className="hidden xl:inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-3.5 py-1.5 text-[11.5px] font-bold uppercase tracking-wider text-forest-950 shadow-xs hover:bg-gold-400 active:scale-98 transition-all"
+              className="hidden xl:inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-3.5 py-1.5 text-[11.5px] font-bold uppercase tracking-wider text-white shadow-xs hover:bg-gold-600 active:scale-98 transition-all"
             >
               <ShoppingBag className="h-3.5 w-3.5" />
               <span>Shop Retail</span>

@@ -371,24 +371,32 @@ export function ProductShowcase({ product, initialVariantId }: ProductShowcasePr
           {" · "}Cash on Delivery available across India
         </p>
 
-        {/* Recognized GI Origin Panel (Eligible Raw Mithila Makhana Only) */}
+        {/* Recognized GI Origin Panel with Official GI Logo */}
         {isGIEligible && (
-          <div className="mt-6 rounded-lg border border-gold-500/50 bg-gradient-to-r from-forest-950/5 via-gold-500/10 to-forest-950/5 p-4 text-forest-950">
-            <div className="flex items-start gap-3">
-              <Award className="h-5 w-5 text-gold-600 shrink-0 mt-0.5" aria-hidden="true" />
+          <div className="mt-6 rounded-xl border border-gold-500/40 bg-ivory-50 p-4 text-charcoal-900 shadow-xs">
+            <div className="flex items-start gap-3.5">
+              <div className="rounded-lg bg-white p-1 border border-beige-200 shrink-0">
+                <img
+                  src="/gitag.jpeg"
+                  alt="Official Mithila Makhana GI Logo (GI-696)"
+                  width={48}
+                  height={52}
+                  className="h-11 w-auto object-contain"
+                />
+              </div>
               <div className="text-[12.5px] leading-relaxed">
-                <p className="font-bold uppercase tracking-wider text-[11px] text-forest-900">
+                <p className="font-bold uppercase tracking-wider text-[10.5px] text-gold-800">
                   Recognized GI Origin
                 </p>
-                <p className="mt-0.5 text-ink-700">
-                  AVRELLE AGRO PRODUCTS PRIVATE LIMITED is an Authorized User of Mithila Makhana (GI-696).
+                <p className="mt-0.5 font-serif italic text-charcoal-900 font-medium">
+                  &ldquo;Proudly recognized as an Authorized User of Mithila Makhana (GI-696).&rdquo;
                 </p>
-                <p className="mt-0.5 font-mono text-[11px] text-gold-800 font-semibold">
+                <p className="mt-0.5 font-mono text-[11px] text-charcoal-700 font-semibold">
                   Authorized User Certificate: AU/48155/GI/696/76
                 </p>
                 <Link
                   href="/mithila-makhana-gi-recognition"
-                  className="mt-1.5 inline-block text-[11.5px] font-semibold text-forest-800 hover:text-gold-700 underline"
+                  className="mt-1.5 inline-block text-[11.5px] font-semibold text-gold-700 hover:text-gold-600 underline"
                 >
                   Explore Mithila Makhana GI Recognition Details &rarr;
                 </Link>
